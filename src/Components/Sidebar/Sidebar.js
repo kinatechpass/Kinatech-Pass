@@ -12,7 +12,6 @@ function Sidebar() {
   return ( 
     <div className='side'>
         <hr/>
-        <br/>
       <div className='sidebar-menu'>
         <AiOutlineMenuUnfold className='side-btn'/>
       </div>

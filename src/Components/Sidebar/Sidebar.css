@@ -29,6 +29,7 @@
   
 }
 .side-content, .side-item{
+  /* background-color: red; */
   list-style-type: none;
   margin-top:20px;
   cursor: pointer;
@@ -124,9 +125,9 @@ hr{
   span{
     display: none;
   }
-  .side > .sidebar-menu:focus ~ span {
-    display: block;
-  }
+ /* .sidebar-menu:focus ~ .side-content {
+    background-color: blue;
+  } */
   .icon{
     font-size: 45px;
   }
