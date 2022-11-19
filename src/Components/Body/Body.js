@@ -90,6 +90,7 @@ function Body() {
 
             <div className='airtime shadow-2xl rounded-md'>
               <h1 className='font-bold text-center text-gray-800 p-4'>Buy Internet Data</h1>
+              
             </div>
 
             <div className='airtime shadow-2xl rounded-md'>
