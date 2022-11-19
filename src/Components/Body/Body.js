@@ -79,25 +79,25 @@ function Body() {
           </div>
            {/* End of mobile card */}
 
-      <div className="packages lg:grid grid-cols-5 gap-4" >
+          <div className="packages lg:grid grid-cols-5 gap-4 cursor-pointer" >
             <div className='airtime shadow-2xl rounded-md'>
-          <h1 className='font-bold text-center text-gray-800 p-4'>Buy Phone Airtime</h1>
+          <h1 className='font-bold text-sm text-center text-gray-800 p-4 '>Buy Phone Airtime</h1>
         </div>
 
             <div className='airtime shadow-2xl rounded-md'>
-              <h1 className='font-bold text-center text-gray-800 p-4'>Buy Phone Airtime</h1>
+              <h1 className='font-bold text-center text-gray-800 p-4'>Buy Internet Data</h1>
             </div>
 
             <div className='airtime shadow-2xl rounded-md'>
-              <h1 className='font-bold text-center text-gray-800 p-4'>Buy Phone Airtime</h1>
+              <h1 className='font-bold text-sm text-center text-gray-800 p-4'>Pay Tv Subscription</h1>
             </div>
 
             <div className='airtime shadow-2xl rounded-md'>
-              <h1 className='font-bold text-center text-gray-800 p-4'>Buy Phone Airtime</h1>
+              <h1 className='font-bold text-sm text-center text-gray-800 p-4'>Pay Electricity Bills</h1>
             </div>
 
             <div className='airtime shadow-2xl rounded-md'>
-              <h1 className='font-bold text-center text-gray-800 p-4'>Buy Phone Airtime</h1>
+              <h1 className='font-bold text-center text-gray-800 p-4'>Buy Gifts Cards</h1>
             </div>
       </div>
       {/* End of packages */}
