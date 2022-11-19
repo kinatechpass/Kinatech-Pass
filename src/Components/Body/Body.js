@@ -80,8 +80,12 @@ function Body() {
            {/* End of mobile card */}
 
           <div className="packages lg:grid grid-cols-5 gap-4 cursor-pointer" >
-            <div className='airtime shadow-2xl rounded-md'>
+            <div className=' text-center airtime shadow-2xl rounded-md '>
           <h1 className='font-bold text-sm text-center text-gray-800 p-4 '>Buy Phone Airtime</h1>
+              <p className='text-gray-500 text-sm p-2'>MTN VTU</p>
+              <p className='text-gray-500 text-sm p-2'>GLO VTU</p>
+              <p className='text-gray-500 text-sm p-2'>AIRTEL VTU</p>
+              <p className='text-gray-500 text-sm p-2'>9 MOBILE VTU</p>
         </div>
 
             <div className='airtime shadow-2xl rounded-md'>
