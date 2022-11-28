@@ -10,14 +10,14 @@ function Footer() {
     <div className="footer">
       <div className="hidden md:block mt-11">
     <div className=''>
-        <h1 className="text-center font-bold text-xl lg:text-2xl">Kinatech VTU</h1>
+        <h1 className="text-center font-bold text-xl lg:text-2xl">Kinatech Pay</h1>
         <h4 className="text-center font-bold text-lg text-gray-800"><i>Make Easy Payments Today!</i></h4>
    </div>
 
    <div className="grid md:grid-cols-3 mt-11 lg:grid-cols-4 ">
           <div className='address relative'>
         <div className="earn p-4 ">
-                <span className='earn mb-9 text-lg text-purple-500 font-bold'> Earn With KinaTech VTU Today!</span>
+                <span className='earn mb-9 text-lg text-purple-500 font-bold'> Earn With KinaTech Pay Today!</span>
         <p className='mt-4'>
                   <span className='p'>   Start earning <br /></span>
                   <span className='p'>    Partner with Us <br/></span>
@@ -81,7 +81,7 @@ function Footer() {
     </div>
    </div>
       </div>
-      <h3 className='text-center mt-20'>© 2022 <b>Kinatech VTU. </b>All Rights Reserved</h3>
+      <h3 className='text-center mt-20'>© 2022 <b>Kinatech Pay. </b>All Rights Reserved</h3>
     </div>
    );
 }

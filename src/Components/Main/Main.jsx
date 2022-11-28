@@ -5,26 +5,32 @@ import NavBar from '../Tailwind Navbar/NavBar';
 import SideBar from '../Tailwind Sidebar/SideBar';
 import Body from '../Body/Body';
 import Footer from '../Footer/Footer';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Airtime from '../../Routes/Aitime/Airtime';
+import Data from '../../Routes/Data/Data';
 // import Tbody from '../Tailwind Body/Tbody';
 function Main() {
   return (
+  <Router>
     <div className='main_container'>
-      
       <NavBar />
-
         <div className=''>
           <SideBar />
         </div>
-
-        <Body />
-        {/* <div className='content bg-blue-500 block '>
-          <h1 className="pt-20">KinaTech VTU</h1>
-          <br />
-          <p className="p-6 ">Make easy Payments Today!</p>
-          <h2>hi my name is praise</h2>
-        </div> */}
+        <Switch>
+          <Route exact path='/'>
+            <Body />
+          </Route>
+          <Route path='/Airtime'>
+            <Airtime />
+          </Route>
+          <Route path='/Data'>
+            <Data />
+          </Route>
+        </Switch>
        <Footer />
     </div>
+  </Router>
   );
 }
 

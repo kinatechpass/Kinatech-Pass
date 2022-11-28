@@ -9,7 +9,7 @@ function NavBar() {
       <nav className="flex justify-between">
         {/* navbar,  nav header */}
         <div className="">
-          <h1 className="p-4 text-xl lg:text-3xl font-bold text-white">KinaTech VTU</h1>
+          <h1 className="p-4 text-xl lg:text-3xl font-bold text-white">KinaTech Pay</h1>
         </div>
         {/* Nav links */}
         <div className="flex justify-end text-white text-lg p-5 cursor-pointer gap-2 lg:gap-10">

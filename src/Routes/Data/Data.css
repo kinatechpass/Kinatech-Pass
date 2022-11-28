@@ -1,0 +1,55 @@
+.Airtime-body {
+  /* display: flex; */
+  /* background-color: white; */
+  /* transform: translate(1rem, 5rem); */
+  width: 100%;
+  margin-left: 10px;
+  padding-left: 20px;
+  padding-top: 70px;
+}
+
+.btnn {
+  background: linear-gradient(to left, #A91079, #4b0377 105%)
+}
+
+.airtel,
+.mtn,
+.mobile,
+.smile,
+.glo {
+  width: 18rem;
+  border: 1.5px solid #efefef;
+  transition: 1s;
+}
+
+.mtn:hover {
+  transition: 2s;
+  background: linear-gradient(to left, rgb(197, 197, 29), rgb(150, 150, 19) 105%)
+}
+
+.airtel:hover {
+  transition: 2s;
+  background: linear-gradient(to left, rgb(128, 2, 2), rgb(243, 85, 85) 105%)
+}
+
+.mobile:hover {
+  transition: 2s;
+  background: linear-gradient(to left, rgb(1, 92, 1), rgb(2, 190, 2) 105%)
+}
+
+.glo:hover {
+  transition: 2s;
+  background: linear-gradient(to left, rgb(0, 63, 0), rgb(1, 104, 1) 105%)
+}
+
+.smile:hover {
+  transition: 2s;
+  background: linear-gradient(to left, rgb(0, 207, 0), rgb(92, 243, 92) 105%)
+}
+
+@media screen and (min-width:800px) {
+  .Airtime-body {
+    width: 100%;
+    padding: 70px;
+  }
+}

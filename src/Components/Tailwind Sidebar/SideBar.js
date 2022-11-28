@@ -9,6 +9,7 @@ import { CiCircleMore } from "react-icons/ci";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
 import { IoIosArrowDropleft } from "react-icons/io";
 import { useState } from 'react';
+import { Link } from 'react-router-dom'
 
 function SideBar() {
   const [expandSidebar, setExpandsideBar] = useState(false)
@@ -39,23 +40,23 @@ function SideBar() {
       <div className="flex justify-center gap-1 py-3 cursor-pointer hover:opacity-50">
         <BsPhone className={ expandSidebar ? "sidebar-body-icons-true":"sidebar-body-icons-false" }
          /><span className={ expandSidebar ? "inline-block" : "hidden lg:inline-block"  }
-        > Buy Phone Airtime<span style={{visibility:'hidden'}}>..</span></span>
+          > <Link to='/Airtime'> Buy Phone Airtime </Link><span style={{visibility:'hidden'}}>..</span></span>
 
       </div>
       <div className="flex justify-center gap-1 py-3 cursor-pointer hover:opacity-50">
         <MdSignalWifi3Bar className="transition ease-in-out delay-150 text-4xl 
         hover:-translate-y-1 hover:scale-110 duration-300 lg:text-2xl 
-        "/><span className={ expandSidebar ? "inline-block" : "hidden lg:inline-block"  }>Buy Internet Data<span style={{visibility:'hidden'}}>..</span></span>
+        "/><span className={expandSidebar ? "inline-block" : "hidden lg:inline-block"}><Link to='/Data'> Buy Internet Data </Link><span style={{visibility:'hidden'}}>..</span></span>
       </div>
       <div className="flex justify-center gap-1 py-3 cursor-pointer hover:opacity-50">
         <CgScreen className="transition ease-in-out delay-150 text-4xl 
         hover:-translate-y-1 hover:scale-110 duration-300 lg:text-2xl 
-        " /><span className={ expandSidebar ? "inline-block" : "hidden lg:inline-block"  }>PayTv Subscription</span>
+        " /><span className={expandSidebar ? "inline-block" : "hidden lg:inline-block"}><Link to='/Airtime'> Pay TV Subscription </Link></span>
       </div>
       <div className="flex justify-center gap-1 py-3 cursor-pointer hover:opacity-50">
         <AiOutlineBulb className="transition ease-in-out delay-150 text-4xl 
         hover:-translate-y-1 hover:scale-110 duration-300 lg:text-2xl 
-        " /><span className={ expandSidebar ? "inline-block" : "hidden lg:inline-block"  }>Pay Electircity Bills<span style={{visibility:'hidden'}}>..</span></span>
+        " /><span className={expandSidebar ? "inline-block" : "hidden lg:inline-block"}><Link to='/Airtime'> Pay Electricity Bills </Link><span style={{visibility:'hidden'}}>..</span></span>
       </div>
       <div className="flex justify-center gap-1 py-3 cursor-pointer hover:opacity-50">
         <CiCircleMore className="transition ease-in-out delay-150 text-4xl 
