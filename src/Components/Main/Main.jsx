@@ -4,6 +4,7 @@ import './Main.css'
 import NavBar from '../Tailwind Navbar/NavBar';
 import SideBar from '../Tailwind Sidebar/SideBar';
 import Body from '../Body/Body';
+import Footer from '../Footer/Footer';
 // import Tbody from '../Tailwind Body/Tbody';
 function Main() {
   return (
@@ -22,7 +23,7 @@ function Main() {
           <p className="p-6 ">Make easy Payments Today!</p>
           <h2>hi my name is praise</h2>
         </div> */}
-    
+       <Footer />
     </div>
   );
 }

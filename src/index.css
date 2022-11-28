@@ -43,3 +43,7 @@ code {
 .sidebar{
   grid-area: sidebar;
 }
+
+.footer{
+  grid-area: footer;
+}

@@ -39,6 +39,81 @@ min-height: 60rem;
       width: 100%;
       height: 16rem;
 }
+.btn{
+  transition: 0.5s;
+}
+.btnDiv3{
+  transform: translateY(75px);
+}
+.btn{
+    background: -webkit-linear-gradient(#8b5cf6, #d946ef);
+}
+.btn:hover{
+  background: #f43f5e;
+}
+.step1{
+  width: 1px;
+  height: 155px;
+  background-color: black;
+}
+.step11 {
+  width: 1px;
+  height: 155px;
+
+}
+.step2 {
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid black;
+  border-radius: 50%;
+ text-align: center;
+ margin: 0;
+}
+.step3 {
+  width: 155px;
+  height: 1px;
+  display: inline-block;
+  background-color: black;
+}
+
+.step4 {
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid black;
+  border-radius: 50%;
+  text-align: center;
+  margin: 0;
+}
+.login{
+
+  margin:0 auto;
+    margin-top: 1rem;
+}
+/* .Step{
+  overflow: auto;
+  white-space: nowrap;
+} */
+
+.container{
+  width: fit-content;
+}
+.hugeText{
+  font-family: "Mona Sans", "Mona Sans Header Fallback", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+  font-feature-settings: unset;
+  
+    background: -webkit-linear-gradient(#67e8f9, #1f2937);
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+  
+}
+
+.quote{
+  min-height: 20rem;
+}
+/* .airtime{
+  height: fit-content;
+} */
 /* .span{
   width: 70px;
   height: 8px;
@@ -48,3 +123,33 @@ min-height: 60rem;
   transform: translateX(150px);
   #0d1117
 } */
+
+/* .reveal {
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: 2s all ease;
+}
+
+.reveal.active {
+  transform: translateY(0);
+  opacity: 1;
+} */
+
+/* 
+function reveal() {
+  var reveals=document.querySelectorAll(".reveal");
+
+  for (var i=0; i < reveals.length; i++) {
+    var windowHeight=window.innerHeight;
+    var elementTop=reveals[i].getBoundingClientRect().top;
+    var elementVisible=150;
+
+    if (elementTop < windowHeight - elementVisible) {
+      reveals[i].classList.add("active");
+    }
+
+    else {
+      reveals[i].classList.remove("active");
+    }
+  } */
