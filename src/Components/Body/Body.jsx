@@ -20,17 +20,19 @@ function Body() {
             <img className='w-full scale-100 sm:scale-100 lg:scale-100' src='./assets/logo.png' />
             
           </div>
-        <Fade left duration={'4000'} >
+        <Slide top duration={'8000'}>
+        <Fade duration={'4000'} >
           <h1 className="headerText font-bold text-3xl lg:text-6xl">Kinatech Pay</h1>
         </Fade>
-            <Fade bottom delay={'4000'}>
+            <Fade >
           <h4 className="headerSubText font-bold text-lg text-purple-500"><i>Make Easy Payments Today!</i></h4>
       </Fade>
-            <Fade bottom delay={'1500'}>
+            <Fade >
             <div className='p mt-4'>
             <p>Top up phone airtime or internet data. Pay electricity bills; renew TV subscriptions. Buy quality insurance covers, pay education bills, transfer funds and do more ... </p>
              </div>
         </Fade>
+      </Slide>
           <div className='Intro text-gray-500 mt-4 '>
 
           <Fade delay={'2000'} left>
@@ -47,15 +49,15 @@ function Body() {
 
               <Fade delay={'1500'} left>
               <span className='hover:text-black cursor-pointer block lg:inline-block '>
-                  <Link to='/Airtime'> Buy Gifts Cards </Link> <span className='hidden lg:inline-block'>|</span> 
+                  <Link to='/Gifts'> Buy Gifts Cards </Link> <span className='hidden lg:inline-block'>|</span> 
               </span>
         </Fade>
          <Fade delay={'3500'} left>
-              <span className='hover:text-black cursor-pointer block lg:inline-block '><Link to='/Airtime'> Pay Bills </Link> <span className='hidden lg:inline-block'>|</span>
+              <span className='hover:text-black cursor-pointer block lg:inline-block '><Link to='/Elec'> Pay Bills </Link> <span className='hidden lg:inline-block'>|</span>
               </span>
     </Fade>
      <Fade delay={'4000'} left>
-                <span className='hover:text-black cursor-pointer block lg:inline-block '><Link to='/Airtime'> Check Waec </Link></span>
+                <span className='hover:text-black cursor-pointer block lg:inline-block '><Link to='/Tv'> Tv Subs </Link></span>
     </Fade>
           </div>
         </div>

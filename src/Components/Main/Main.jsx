@@ -8,6 +8,10 @@ import Footer from '../Footer/Footer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Airtime from '../../Routes/Aitime/Airtime';
 import Data from '../../Routes/Data/Data';
+import Elec from '../../Routes/Electricity/Elec';
+import Tv from '../../Routes/Tv/Tv';
+import Gifts from '../../Routes/Gifts/Gifts';
+import More from '../../Routes/More/More';
 // import Tbody from '../Tailwind Body/Tbody';
 function Main() {
   return (
@@ -27,6 +31,21 @@ function Main() {
           <Route path='/Data'>
             <Data />
           </Route>
+          <Route path='/Electricity'>
+            <Elec />
+          </Route>
+          <Route path='/Tv'>
+            <Tv />
+          </Route>
+          <Route path='/Gifts'>
+            <Gifts />
+          </Route>
+          <Route path='/More'>
+            <More/>
+          </Route>
+          {/* <Route path='/Join'>
+            <Join/>
+          </Route> */}
         </Switch>
        <Footer />
     </div>

@@ -51,17 +51,18 @@ function SideBar() {
       <div className="flex justify-center gap-1 py-3 cursor-pointer hover:opacity-50">
         <CgScreen className="transition ease-in-out delay-150 text-4xl 
         hover:-translate-y-1 hover:scale-110 duration-300 lg:text-2xl 
-        " /><span className={expandSidebar ? "inline-block" : "hidden lg:inline-block"}><Link to='/Airtime'> Pay TV Subscription </Link></span>
+        " /><span className={expandSidebar ? "inline-block" : "hidden lg:inline-block"}><Link to='/Tv'> Pay TV Subscription </Link></span>
       </div>
       <div className="flex justify-center gap-1 py-3 cursor-pointer hover:opacity-50">
         <AiOutlineBulb className="transition ease-in-out delay-150 text-4xl 
         hover:-translate-y-1 hover:scale-110 duration-300 lg:text-2xl 
-        " /><span className={expandSidebar ? "inline-block" : "hidden lg:inline-block"}><Link to='/Airtime'> Pay Electricity Bills </Link><span style={{visibility:'hidden'}}>..</span></span>
+        " /><span className={expandSidebar ? "inline-block" : "hidden lg:inline-block"}><Link to='/Electricity'> Pay Electricity Bills </Link><span style={{visibility:'hidden'}}>..</span></span>
       </div>
       <div className="flex justify-center gap-1 py-3 cursor-pointer hover:opacity-50">
         <CiCircleMore className="transition ease-in-out delay-150 text-4xl 
         hover:-translate-y-1 hover:scale-110 duration-300 lg:text-2xl 
-        "/><span className={ expandSidebar ? "inline-block" : "hidden lg:inline-block"  }>And Lots More...<span style={{visibility:'hidden'}}>...</span></span>
+        "/><span className={ expandSidebar ? "inline-block" : "hidden lg:inline-block"  }>
+          <Link to='/More'>And Lots More...</Link><span style={{visibility:'hidden'}}>...</span></span>
       </div>
       {/* <div>
         <MdSettings /><span>Our Services</span>
