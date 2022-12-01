@@ -12,6 +12,8 @@ import Elec from '../../Routes/Electricity/Elec';
 import Tv from '../../Routes/Tv/Tv';
 import Gifts from '../../Routes/Gifts/Gifts';
 import More from '../../Routes/More/More';
+import JoinUs from '../../Routes/Join/JoinUs';
+import JoinUs from '../../Routes/Join/JoinUs';
 // import Tbody from '../Tailwind Body/Tbody';
 function Main() {
   return (
@@ -43,9 +45,12 @@ function Main() {
           <Route path='/More'>
             <More/>
           </Route>
-          {/* <Route path='/Join'>
-            <Join/>
-          </Route> */}
+          <Route path='/joinUs'>
+            <JoinUs/>
+          </Route>
+          <Route path='/Login'>
+            <Login />
+          </Route>
         </Switch>
        <Footer />
     </div>
