@@ -5,7 +5,7 @@ import NavBar from '../Tailwind Navbar/NavBar';
 import SideBar from '../Tailwind Sidebar/SideBar';
 import Body from '../Body/Body';
 import Footer from '../Footer/Footer';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import Airtime from '../../Routes/Aitime/Airtime';
 import Data from '../../Routes/Data/Data';
 import Elec from '../../Routes/Electricity/Elec';
