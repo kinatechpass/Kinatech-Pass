@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/kinatechpass/Kinatech-Pass/static/css/main.e3cccb62.css",
+    "main.js": "/kinatechpass/Kinatech-Pass/static/js/main.1d3da247.js",
+    "index.html": "/kinatechpass/Kinatech-Pass/index.html",
+    "main.e3cccb62.css.map": "/kinatechpass/Kinatech-Pass/static/css/main.e3cccb62.css.map",
+    "main.1d3da247.js.map": "/kinatechpass/Kinatech-Pass/static/js/main.1d3da247.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e3cccb62.css",
+    "static/js/main.1d3da247.js"
+  ]
+}
