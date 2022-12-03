@@ -17,7 +17,7 @@ export default function Account() {
       <div className="Account gap-4 mt-9 sm:grid grid-cols-2 md:grid-cols-3">
         <div className="main balance mt-7 m-auto sm:ml-0 rounded-2xl">
           <div className="flex">
-            <div className="m-4 p-4 bg-fuchsia-500 rounded-full">
+            <div className="iconDiv m-4 p-4 bg-fuchsia-500 rounded-full">
               <BsWallet className='text-5xl text-white' />
             </div>
             <div className="mt-7 p-2 text-fuchsia-500 font-bold">
@@ -25,13 +25,35 @@ export default function Account() {
               <p className='text-white text-xl font-light font-sans'>0.00 NGN</p>
             </div>
           </div>
-          <p className='text-white text-center'>Balances</p>
-          <div className="flex"></div>
+          <p className='text-white ml-4 text-fuchsia-500 font-bold'>Earnings</p>
+          <div className="flex gap-4">
+            <div className="today">
+              <p className='text-white text-md ml-4 font-bold font-sans'>0.00 
+              <span className='ml-1' style={{fontSize:'xx-small'}}>NGN</span>
+                </p>
+              <small className='relative bottom-1 text-white ml-4 text-fuchsia-500 '>Today</small>
+            </div>
+
+            <div className="Last Week">
+              <p className='text-white text-md ml-4 font-bold font-sans'>0.00
+                <span className='ml-1' style={{ fontSize: 'xx-small' }}>NGN</span>
+              </p>
+              <small className='relative bottom-1 text-white ml-4 text-fuchsia-500 '>LastWeek</small>
+            </div>
+
+            <div className="block md:hidden lg:block Last Month">
+              <p className='text-white text-md ml-4 font-bold font-sans'>0.00
+                <span className='ml-1' style={{ fontSize: 'xx-small' }}>NGN</span>
+              </p>
+              <small className='relative bottom-1 text-white ml-4 text-fuchsia-500 '>LastMonth</small>
+            </div>
+          </div>
+          
         </div>
 
         <div className="main bg-white mt-7 m-auto  rounded-2xl">
           <div className="flex">
-            <div className="m-4 p-4 bg-fuchsia-800 rounded-full">
+            <div className="iconDiv m-4 p-4 bg-fuchsia-800 rounded-full">
               <BsWallet className='text-5xl text-white' />
             </div>
             <div className="mt-7 p-2 text-fuchsia-800 font-bold">
@@ -53,9 +75,9 @@ export default function Account() {
               <p className='text-gray-800 text-xl font-light font-sans'>0.00 NGN</p>
             </div>
           </div>
-        <div className="hidden lg:grid grid-cols-2 md:grid-cols-2 ml-4 lg:grid-cols-3">
+        <div className="hidden xl:grid grid-cols-2 md:grid-cols-2 gap-2 ml-0 lg:grid-cols-3">
           <div className='m-4'>
-            <small className='block'>Pay With Bank Transfer</small>
+            <small className='block'> Bank Transfer</small>
             <button className='deposit mt-1 text-white text-center px-4 py-1 rounded-lg lg:font-bold'>
             Deposit
             </button> 
@@ -77,14 +99,14 @@ export default function Account() {
         </div>
            
 
-          <div className="block lg:hidden">
-            <small className='text-center mx-auto'>Add Funds</small>
+          <div className="block xl:hidden">
+            <h2 className=' text-center mx-auto font-bold'>Add Funds</h2>
 
             <div className="grid grid-cols-2 ml-2 mt-4">
 
-              <small className='text-center'><BsWallet className='mx-auto' />Bank Transfer</small>
-              <small className='text-center'><BsWallet className='mx-auto' />Pay With card</small>
-              <small className='text-center mt-4'><BsWallet className='mx-auto' />Pay With Eth</small>
+              <small className='text-center hover:text-gray-600 cursor-pointer'><BsWallet className='mx-auto' />Bank Transfer</small>
+              <small className='text-center hover:text-gray-600 cursor-pointer'><BsWallet className='mx-auto' />Pay With card</small>
+              <small className='text-center mt-4 hover:text-gray-600 cursor-pointer'><BsWallet className='mx-auto' />Pay With Eth</small>
             </div>
           </div>
            
@@ -93,19 +115,26 @@ export default function Account() {
 
         </div>
          
-
-        <div className="main bg-white mt-7 m-auto rounded-2xl">
+    {/* recent transactions */}
+        <div className="main md:col-span-2 bg-white ml-4 md:ml-0 mt-7 m-auto rounded-2xl">
           <div className="flex">
-            <div className="m-4 p-4 bg-fuchsia-800 rounded-full">
+            <div className="iconDiv m-4 p-4 bg-fuchsia-800 rounded-full">
               <BsWallet className='text-5xl text-white' />
             </div>
             <div className="mt-7 p-2 text-fuchsia-800 font-bold">
-              <p>Referral Earnings</p>
-              <p className='text-gray-800 text-xl font-light font-sans'>0.00 NGN</p>
+              <p>Recent Transactions</p>
+            
             </div>
           </div>
-          <p className='text-white text-center'>Balances</p>
-          <div className="flex"></div>
+        
+          <div className="bg-purple-100 rounded-xl m-2 flex">
+            <p className='text-sm p-1'>500 NGN Airtime Purchase, MTN  No: 080xxxxxx26, Amount Paid:480 NGN, Status:Succesfull</p> <p className='inline-block text-2xl text-rose-500 cursor-pointer'>&times;</p>
+          </div>
+          <div className="bg-purple-100 rounded-xl m-2 flex">
+            <p className='text-sm p-1'>500 NGN Airtime Purchase, MTN  No: 080xxxxxx26, Amount Paid:480 NGN, Status:Succesfull</p> <p className='inline-block text-2xl text-rose-500 cursor-pointer'>&times;</p>
+          </div>
+
+             <p className='text-gray-800 text-center font-sans cursor-pointer hover:text-gray-500 '>View More...</p>
         </div>
 
 
@@ -114,7 +143,7 @@ export default function Account() {
 
         <div className="main bg-white mt-7 m-auto rounded-2xl">
           <div className="flex">
-            <div className="m-4 p-4 bg-fuchsia-800 rounded-full">
+            <div className="iconDiv m-4 p-4 bg-fuchsia-800 rounded-full">
               <BsWallet className='text-5xl text-white' />
             </div>
             <div className="mt-7 p-2 text-fuchsia-700 font-bold">

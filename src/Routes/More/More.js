@@ -20,7 +20,7 @@ export default function More() {
         <div className="md:grid md:grid-cols-2 lg:grid-cols-3">
 
           <div className="phone hover:text-white flex border-sm mt-4 mb-4 p-4">
-            <img className='image mt-4' width={'70px'} src={process.env.PUBLIC_URL + '/Assets/Waec.jpg'} />
+            <img className='image mt-4' width={'70px'} src='./assets/Waec.jpg' />
             <div className='mx-4'>
               <span className='font-bold text-sm hover:text-white text-gray-800'>WAEC Result Checker Pin </span>
               <small className='block font-sans' style={{ fontSize: '12px' }}>WAEC Result Checking Pin / Scratch Card</small>
@@ -58,7 +58,7 @@ export default function More() {
         <div className="md:grid md:grid-cols-2 lg:grid-cols-3">
 
           <div className="phone hover:text-white flex border-sm mt-4 mb-4 p-4">
-            <img className='image mt-4' width={'70px'} src={process.env.PUBLIC_URL + '/Assets/pubg.jpg'} />
+            <img className='image mt-4' width={'70px'} src='./assets/pubg.jpg' />
             <div className='mx-4'>
               <span className='font-bold text-sm hover:text-white text-gray-800'>PUBG MOBILE </span>
               <small className='block font-sans' style={{ fontSize: '12px' }}>Get The PUBG Mobile gift Card</small>
@@ -68,7 +68,7 @@ export default function More() {
 
 
           <div className="phone hover:text-white flex border-sm mt-4 mb-4 p-4">
-            <img className='image mt-4' width={'70px'} src={process.env.PUBLIC_URL + '/Assets/freefire.png'} />
+            <img className='image mt-4' width={'70px'} src='./assets/freefire.png' />
             <div className='mx-4'>
               <span className='font-bold text-sm hover:text-white text-gray-800'>Free Fire </span>
               <small className='block font-sans' style={{ fontSize: '12px' }}>Get The Free Fire gift Card</small>

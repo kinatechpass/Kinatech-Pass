@@ -1,11 +1,14 @@
 .main{
   width: 100%;
   height: 15rem;
+ 
 }
 .balance{
 background: linear-gradient(to left, #c06ea6 -105%, #2E0249 105%);
 
 }
+
+
 .iconDiv{
   height: fit-content;
 }
@@ -17,4 +20,8 @@ background: linear-gradient(to left, #c06ea6 -105%, #2E0249 105%);
 }
 .deposit{
   background: linear-gradient(to left, #c06ea6 -105%, #2E0249 105%);
+}
+
+.deposit:hover {
+  background: plum;
 }

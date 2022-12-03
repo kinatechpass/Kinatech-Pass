@@ -21,7 +21,7 @@ export default function Tv() {
         <div className="md:grid md:grid-cols-2 lg:grid-cols-3">
 
           <div className="phone hover:text-white flex border-sm mt-4 mb-4 p-4">
-            <img className='image mt-4' width={'70px'} src={process.env.PUBLIC_URL + '/Assets/dstv.jpg'} />
+            <img className='image mt-4' width={'70px'} src='./assets/dstv.jpg' />
             <div className='mx-2'>
               <span className='font-bold hover:text-white text-gray-800'>DSTV Subscription</span>
               <small className='block font-sans' style={{ fontSize: '12px' }}>Choose from a range of DStv bouquets for your entertainment. Easy payment, quick value delivery.</small>
@@ -31,7 +31,7 @@ export default function Tv() {
           </div>
 
           <div className="phone hover:text-white flex border-sm mt-4 mb-4 p-4">
-            <img className='image mt-4' width={'70px'} src={process.env.PUBLIC_URL + '/Assets/Gotv.jpg'} />
+            <img className='image mt-4' width={'70px'} src='./assets/Gotv.jpg' />
             <div className='mx-2'>
               <span className='font-bold text-gray-800'>GOTV Subscription</span>
               <small className='block font-sans' style={{ fontSize: '12px' }}>Choose from a range of GOtv bouquets for your entertainment. Easy payment, quick value delivery.</small>

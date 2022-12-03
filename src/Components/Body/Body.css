@@ -11,6 +11,11 @@ min-height: 60rem;
 .body{
   padding: 70px;
 }
+@media only screen and (max-width:400px){
+  .body{
+    padding: 35px;
+  }
+}
 .headerText {
   /* font-size: 72px; */
   background: -webkit-linear-gradient(#8b5cf6, #d946ef);

@@ -17,7 +17,7 @@ function Body() {
         <div className="hero md:block justify-center ">
 
           <div className=" inline-block md:hidden joinImage w-full">
-              <img className='w-full scale-100 sm:scale-100 lg:scale-100' src={process.env.PUBLIC_URL + './Assets/logo.png'} alt='image'/>
+              <img className='w-full scale-100 sm:scale-100 lg:scale-100' src='./assets/logo.png' alt='image'/>
             
           </div>
         <Slide top duration={'8000'}>
@@ -63,7 +63,7 @@ function Body() {
         </div>
       <Zoom delay={2000} duration={6000}>
         <div className="hidden md:block joinImage w-10/11 my-16 lg:my-9">
-              <img className='w-full scale-100 sm:scale-100 lg:scale-100' src={process.env.PUBLIC_URL + './Assets/logo.png'} alt='image'/>
+              <img className='w-full scale-100 sm:scale-100 lg:scale-100' src='./assets/logo.png' alt='image'/>
         </div>
       </Zoom>
         </div>
@@ -228,7 +228,7 @@ function Body() {
                 <Fade right duration={4000}>
               <div className="hidden md:block img hover:shadow-xl  shadow-purple-300 hover:shadow-purple-100 shadow-2xl rounded-md ">
                     <Zoom duration={4000}>
-                      <img className='p-2' src={process.env.PUBLIC_URL + '/Assets/3d.png'} />
+                      <img className='p-2' src='./assets/3d.png' />
               </Zoom>
               </div>
             </Fade>
@@ -240,7 +240,7 @@ function Body() {
            ">
           <Zoom duration={4000}>
               <div className="img ">
-                    <img src={process.env.PUBLIC_URL + '/Assets/approve.png'} />
+                    <img src='./assets/Approve.png' />
               </div>
           </Zoom>
            <Zoom duration={4000}>
@@ -273,12 +273,12 @@ function Body() {
                 </div>
 
                 <div className="md:hidden block img hover:shadow-xl  shadow-purple-300 hover:shadow-purple-100 shadow-2xl rounded-md ">
-                    <img className='p-2' src={process.env.PUBLIC_URL + '/Assets/logo.png'} />
+                    <img className='p-2' src='./assets/logo.png' />
                 </div>
               </div>
 
               <div className="hidden md:block img hover:shadow-xl  shadow-purple-300 hover:shadow-purple-100 shadow-2xl rounded-md ">
-                  <img className='p-2' src={process.env.PUBLIC_URL + '/Assets/logo.png'} />
+                  <img className='p-2' src='./assets/logo.png' />
               </div>
             </div>
     </Slide>
@@ -380,7 +380,7 @@ function Body() {
       <div className="md:grid grid-cols-2 mt-11">
          <Zoom duration={4000}>
           <div className="">
-              <img className='w-full scale-100 sm:scale-100 lg:scale-100' src={process.env.PUBLIC_URL + '/Assets/join.png'} />
+              <img className='w-full scale-100 sm:scale-100 lg:scale-100' src='./assets/join.png' />
           </div>
        </Zoom>
 
