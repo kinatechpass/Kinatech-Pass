@@ -15,6 +15,7 @@ import More from '../../Routes/More/More';
 import JoinUs from '../../Routes/Join/JoinUs';
 import Login from '../../Routes/Login/Login';
 import Account from '../../Routes/Account/Account';
+import Form from '../../Routes/Aitime/Form';
 
 // import Tbody from '../Tailwind Body/Tbody';
 function Main() {
@@ -39,6 +40,7 @@ function Main() {
             <Route path='/Login' element={<Login />} />
             <Route path='/More' element={<More />} />
             <Route path='/Account' element={<Account />} />
+           <Route path='/Airtime/Form' element={<Form />} />
 
   
    </Routes>

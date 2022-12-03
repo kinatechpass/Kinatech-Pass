@@ -20,7 +20,7 @@ export default function Data() {
         <div className="md:grid md:grid-cols-2 lg:grid-cols-3">
 
           <div className="airtel hover:text-white flex border-sm mt-4 mb-4 p-4">
-            <img className='image mt-4' width={'70px'} src='./assets/Airtel.png' />
+            <img className='image mt-4' width={'70px'} src='./assets/Airtel.jpg' />
             <div className='mx-4'>
               <span className='font-bold hover:text-white text-gray-800'>Airtel DATA</span>
               <small className='block font-sans' style={{ fontSize: '12px' }}>Airtel Data - Get instant Bonus</small>

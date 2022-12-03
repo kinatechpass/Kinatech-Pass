@@ -1,9 +1,29 @@
 import './Airtime.css'
 import '../../index.css'
-import Slide from 'react-reveal/Slide';
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import shareContext from '../../Context/ShareContext';
 function Airtime() {
+   const {setText} = useContext(shareContext)
+  
+  const buyAirtel = () => {
+   setText("airtel")
+  }
+  const buyMTN = () => {
+    setText("mtn")
+  }
+  const buySmile = () => {
+    setText("smile")
+  }
+  const buyGLO = () => {
+    setText("glo")
+  }
+  const buyMobile = () => {
+    setText("9mobile")
+  }
   return ( 
   <div className='cover'>
+ 
       <div className="Airtime-body">
 
 </div>
@@ -20,18 +40,18 @@ function Airtime() {
         <span className='text-sm text-gray-800 p-2'>Recharge your phone airtime using the VTpass VTU service</span>
 
     <div className="md:grid md:grid-cols-2 lg:grid-cols-3">
-
-      <div className="airtel hover:text-white flex border-sm mt-4 mb-4 p-4">
+    <Link to="/Airtime/Form">
+      <div onClick={buyAirtel} className="airtel cursor-pointer hover:text-white flex border-sm mt-4 mb-4 p-4">
             <img className='image mt-4 scale-0.5' width={'70px'} src='./assets/Airtel.jpg'/>
         <div className=' mx-4'>
           <span className='font-bold hover:text-white text-gray-800'>Airtel Airtime</span>
           <small className='block font-sans' style={{fontSize:'12px'}}>Airtel airtime - Get instant Top up</small>
-        </div>
-
-        
+        </div> 
       </div>
+</Link>
 
-          <div className="mtn hover:text-white flex border-sm mt-4 mb-4 p-4">
+      <Link to="/Airtime/Form">
+            <div onClick={buyMTN} className="mtn hover:text-white flex border-sm mt-4 mb-4 p-4">
             <img className='image mt-4' width={'70px'} src='./assets/MTN.jpg' />
             <div className='mx-4'>
               <span className='font-bold text-gray-800'>MTN Airtime</span>
@@ -40,41 +60,40 @@ function Airtime() {
 
 
           </div>
-
-          <div className="mobile hover:text-white flex border-sm mt-4 mb-4 p-4">
+        </Link>
+          <Link to="/Airtime/Form">
+            <div onClick={buyGLO} className="mobile  hover:text-white flex border-sm mt-4 mb-4 p-4">
             <img className='image mt-4' width={'70px'} src='./assets/GLO.jpg'/>
             <div className='mx-4'>
               <span className='font-bold text-gray-800'>Glo Airtime</span>
               <small className='block font-sans' style={{ fontSize: '12px' }}>GLO airtime - Get instant Top up</small>
             </div>
-
-
           </div>
-
-
-          <div className="glo hover:text-white flex border-sm mt-4 mb-4 p-4">
+      </Link>
+          <Link to="/Airtime/Form">
+            <div onClick={buyMobile}  className="glo hover:text-white flex border-sm mt-4 mb-4 p-4">
             <img className='image mt-4' width={'70px'} src='./assets/mobile.jpg'/>
             <div className='mx-4'>
               <span className='font-bold text-gray-800'>9Mobile Airtime</span>
               <small className='block font-sans' style={{ fontSize: '12px' }}>9Mobile - Get instant Top up</small>
             </div>
-
-
           </div>
-
-          <div className="smile hover:text-white flex border-sm mt-4 mb-4 p-4">
+      </Link>
+       <Link to="/Airtime/Form">
+          <div onClick={buySmile} className="smile hover:text-white flex border-sm mt-4 mb-4 p-4">
             <img className='image mt-4' width={'70px'} src='./assets/smile.jpg' />
             <div className='mx-4'>
               <span className='font-bold text-gray-800'>Smile Airtime</span>
               <small className='block font-sans' style={{ fontSize: '12px' }}>Smile - Get instant Top up</small>
             </div>
 
-
           </div>
+         </Link>
     </div>
 
 
-</div>
+  </div>
+
     </div> 
   );
 }
