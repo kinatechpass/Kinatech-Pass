@@ -17,7 +17,7 @@ function Body() {
         <div className="hero md:block justify-center ">
 
           <div className=" inline-block md:hidden joinImage w-full">
-            <img className='w-full scale-100 sm:scale-100 lg:scale-100' src='./assets/logo.png' />
+              <img className='w-full scale-100 sm:scale-100 lg:scale-100' src={process.env.PUBLIC_URL + './Assets/logo.png'} alt='image'/>
             
           </div>
         <Slide top duration={'8000'}>
@@ -27,7 +27,7 @@ function Body() {
             <Fade >
           <h4 className="headerSubText font-bold text-lg text-purple-500"><i>Make Easy Payments Today!</i></h4>
       </Fade>
-            <Fade >
+            <Fade duration={'10000'}>
             <div className='p mt-4'>
             <p>Top up phone airtime or internet data. Pay electricity bills; renew TV subscriptions. Buy quality insurance covers, pay education bills, transfer funds and do more ... </p>
              </div>
@@ -63,7 +63,7 @@ function Body() {
         </div>
       <Zoom delay={2000} duration={6000}>
         <div className="hidden md:block joinImage w-10/11 my-16 lg:my-9">
-          <img className='w-full scale-100 sm:scale-100 lg:scale-100'  src='./assets/logo.png'/>
+              <img className='w-full scale-100 sm:scale-100 lg:scale-100' src={process.env.PUBLIC_URL + './Assets/logo.png'} alt='image'/>
         </div>
       </Zoom>
         </div>
@@ -115,7 +115,8 @@ function Body() {
             </Fade>
          <Fade delay={4000} bottom>
             <div className='btnDiv mt-4'>
-              <button className='btn bg-rose-500 text-white p-1 rounded-lg'>GET Started!</button>
+              <button className='btn bg-rose-500 text-white p-1 rounded-lg'>
+                <Link to='/Airtime'>GET Started!</Link></button>
             </div>
         </Fade>
         </div>
@@ -132,7 +133,8 @@ function Body() {
       </Fade>
             <Fade delay={4000} bottom>
               <div className='btnDiv mt-4'>
-                <button className='btn bg-rose-500 text-white p-1 rounded-lg'>GET Started!</button>
+                    <button className='btn bg-rose-500 text-white p-1 rounded-lg'> 
+                    <Link to='/Data'>GET Started!</Link></button>
               </div>
           </Fade>
             </div>
@@ -147,7 +149,7 @@ function Body() {
               </Fade>
               
               <div className='btnDiv3 mt-4 '>
-                <button className='btn bg-rose-500 text-white p-1 rounded-lg'>GET Started!</button>
+                <button className='btn bg-rose-500 text-white p-1 rounded-lg'> <Link to='/Tv'>GET Started!</Link></button>
               </div>
              
             </div>
@@ -164,7 +166,7 @@ function Body() {
               </Fade>
                 <Fade delay={3500} bottom>
                   <div className='btnDiv mt-4'>
-                    <button className='btn bg-rose-500 text-white p-1 rounded-lg'>GET Started!</button>
+                    <button className='btn bg-rose-500 text-white p-1 rounded-lg'><Link to='/Electricity'>GET Started!</Link></button>
                   </div>
               </Fade>
             </div>
@@ -182,7 +184,7 @@ function Body() {
               </Fade>
                <Fade delay={3500} bottom>
               <div className='btnDiv mt-4'>
-                <button className='btn bg-rose-500 text-white p-1 rounded-lg'>GET Started!</button>
+                    <button className='btn bg-rose-500 text-white p-1 rounded-lg'><Link to='/More'>GET Started!</Link></button>
               </div>
             </Fade>
             </div>
@@ -226,7 +228,7 @@ function Body() {
                 <Fade right duration={4000}>
               <div className="hidden md:block img hover:shadow-xl  shadow-purple-300 hover:shadow-purple-100 shadow-2xl rounded-md ">
                     <Zoom duration={4000}>
-                <img className='p-2' src='./assets/3d.png' />
+                      <img className='p-2' src={process.env.PUBLIC_URL + '/Assets/3d.png'} />
               </Zoom>
               </div>
             </Fade>
@@ -238,7 +240,7 @@ function Body() {
            ">
           <Zoom duration={4000}>
               <div className="img ">
-                <img src='./assets/approve.png' />
+                    <img src={process.env.PUBLIC_URL + '/Assets/approve.png'} />
               </div>
           </Zoom>
            <Zoom duration={4000}>
@@ -271,12 +273,12 @@ function Body() {
                 </div>
 
                 <div className="md:hidden block img hover:shadow-xl  shadow-purple-300 hover:shadow-purple-100 shadow-2xl rounded-md ">
-                  <img className='p-2' src='./assets/logo.png' />
+                    <img className='p-2' src={process.env.PUBLIC_URL + '/Assets/logo.png'} />
                 </div>
               </div>
 
               <div className="hidden md:block img hover:shadow-xl  shadow-purple-300 hover:shadow-purple-100 shadow-2xl rounded-md ">
-                <img className='p-2' src='./assets/logo.png' />
+                  <img className='p-2' src={process.env.PUBLIC_URL + '/Assets/logo.png'} />
               </div>
             </div>
     </Slide>
@@ -378,7 +380,7 @@ function Body() {
       <div className="md:grid grid-cols-2 mt-11">
          <Zoom duration={4000}>
           <div className="">
-            <img className='w-full scale-100 sm:scale-100 lg:scale-100' src='./assets/join.png' />
+              <img className='w-full scale-100 sm:scale-100 lg:scale-100' src={process.env.PUBLIC_URL + '/Assets/join.png'} />
           </div>
        </Zoom>
 

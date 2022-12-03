@@ -20,7 +20,7 @@ export default function Data() {
         <div className="md:grid md:grid-cols-2 lg:grid-cols-3">
 
           <div className="airtel hover:text-white flex border-sm mt-4 mb-4 p-4">
-            <img className='image mt-4' width={'70px'} src='./Assets/Airtel.jpg' />
+            <img className='image mt-4' width={'70px'} src={process.env.PUBLIC_URL + '/Assets/Airtel.jpg'} />
             <div className='mx-4'>
               <span className='font-bold hover:text-white text-gray-800'>Airtel DATA</span>
               <small className='block font-sans' style={{ fontSize: '12px' }}>Airtel Data - Get instant Bonus</small>
@@ -30,7 +30,7 @@ export default function Data() {
           </div>
 
           <div className="mtn hover:text-white flex border-sm mt-4 mb-4 p-4">
-            <img className='image mt-4' width={'70px'} src='./Assets/MTN.jpg' />
+            <img className='image mt-4' width={'70px'} src={process.env.PUBLIC_URL + '/Assets/MTN.jpg'} />
             <div className='mx-4'>
               <span className='font-bold text-gray-800'>MTN DATA</span>
               <small className='block font-sans' style={{ fontSize: '12px' }}>MTN Data - Get instant Bonus</small>
@@ -40,7 +40,7 @@ export default function Data() {
           </div>
 
           <div className="mobile hover:text-white flex border-sm mt-4 mb-4 p-4">
-            <img className='image mt-4' width={'70px'} src='./Assets/GLO.jpg' />
+            <img className='image mt-4' width={'70px'} src={process.env.PUBLIC_URL + '/Assets/GLO.jpg'} />
             <div className='mx-4'>
               <span className='font-bold text-gray-800'>Glo DATA</span>
               <small className='block font-sans' style={{ fontSize: '12px' }}>Glo Data - Get instant Bonus</small>
@@ -51,7 +51,7 @@ export default function Data() {
 
 
           <div className="glo hover:text-white flex border-sm mt-4 mb-4 p-4">
-            <img className='image mt-4' width={'70px'} src='./Assets/mobile.jpg' />
+            <img className='image mt-4' width={'70px'} src={process.env.PUBLIC_URL + '/Assets/mobile.jpg'} />
             <div className='mx-4'>
               <span className='font-bold text-gray-800'>9Mobile DATA</span>
               <small className='block font-sans' style={{ fontSize: '12px' }}>9Mobile Data - Get instant Bonus</small>
@@ -61,7 +61,7 @@ export default function Data() {
           </div>
 
           <div className="smile hover:text-white flex border-sm mt-4 mb-4 p-4">
-            <img className='image mt-4' width={'70px'} src='./Assets/Smile.jpg' />
+            <img className='image mt-4' width={'70px'} src={process.env.PUBLIC_URL + '/Assets/Smile.jpg'} />
             <div className=''>
               <span className='font-bold text-gray-800'>Smile DATA</span>
               <small className='block font-sans' style={{ fontSize: '12px' }}>Smile Data - Get instant Bonus</small>

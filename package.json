@@ -1,6 +1,5 @@
 {
   "name": "kinatech-vtu",
-  "homepage": "https://kinatechpass.github.io/Kinatech-Pass",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,7 +12,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
     "react-reveal": "^1.2.2",
-    "react-router-dom": "^5.3.4",
+    "react-router-dom": "^6.4.4",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },

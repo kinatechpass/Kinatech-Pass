@@ -2,7 +2,7 @@ import '../../index.css'
 import { FaLightbulb } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
 import { IoMdNotifications } from "react-icons/io";
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link } from 'react-router-dom';
 
 function NavBar() {
   return (

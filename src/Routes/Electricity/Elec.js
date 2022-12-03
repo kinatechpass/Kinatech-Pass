@@ -21,7 +21,7 @@ export default function Elec() {
         <div className="md:grid md:grid-cols-2 lg:grid-cols-3">
 
           <div className="phone hover:text-white flex border-sm mt-4 mb-4 p-4">
-            <img className='image mt-4' width={'70px'} src='./Assets/ikeja.jpg' />
+            <img className='image mt-4' width={'70px'} src={process.env.PUBLIC_URL + '/Assets/ikeja.jpg'} />
             <div className='mx-4'>
               <span className='font-bold text-sm hover:text-white text-gray-800'>Ikeja Electric Payment - IKEDC </span>
               <small className='block font-sans' style={{ fontSize: '12px' }}>Prepaid And Postpaid IKEDC Payments</small>
@@ -31,7 +31,7 @@ export default function Elec() {
           </div>
 
           <div className="phone hover:text-white flex border-sm mt-4 mb-4 p-4">
-            <img className='image mt-4' width={'70px'} src='./Assets/Abuja.jpg' />
+            <img className='image mt-4' width={'70px'} src={process.env.PUBLIC_URL + '/Assets/Abuja.jpg'} />
             <div className='mx-4'>
               <span className='text-sm font-bold text-gray-800'>Abuja Electricity Distribution company - AEDC </span>
               <small className='block font-sans' style={{ fontSize: '12px' }}>Prepaid And Postpaid AEDC Payments</small>

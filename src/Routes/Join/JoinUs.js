@@ -3,7 +3,7 @@ import './Register.css'
 import '../../index.css'
 import { HiOutlineMail, HiLockClosed } from "react-icons/hi";
 import { BsTelephoneFill } from "react-icons/bs"
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link } from 'react-router-dom';
 
 export default function JoinUs() {
       const emailRef = useRef()
@@ -76,7 +76,7 @@ export default function JoinUs() {
 
 
           <div className="hidden md:block formImage lg:col-span-2">
-            <img className='img' src='./Assets/people2.jpeg'/>
+            <img className='img' src={process.env.PUBLIC_URL + '/Assets/people2.jpeg'}/>
           </div>
         </div>
 

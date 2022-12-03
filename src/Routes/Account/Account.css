@@ -1,0 +1,20 @@
+.main{
+  width: 100%;
+  height: 15rem;
+}
+.balance{
+background: linear-gradient(to left, #c06ea6 -105%, #2E0249 105%);
+
+}
+.iconDiv{
+  height: fit-content;
+}
+@media screen and (max-width:600px) {
+  .main{
+    width: fit-content;
+    height: fit-content;
+  }
+}
+.deposit{
+  background: linear-gradient(to left, #c06ea6 -105%, #2E0249 105%);
+}
