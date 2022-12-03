@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Kinatech-Pass/static/css/main.e3cccb62.css",
-    "main.js": "/Kinatech-Pass/static/js/main.e21b39fc.js",
-    "index.html": "/Kinatech-Pass/index.html",
-    "main.e3cccb62.css.map": "/Kinatech-Pass/static/css/main.e3cccb62.css.map",
-    "main.e21b39fc.js.map": "/Kinatech-Pass/static/js/main.e21b39fc.js.map"
+    "main.css": "./static/css/main.8b21423d.css",
+    "main.js": "./static/js/main.720aeca1.js",
+    "index.html": "./index.html",
+    "main.8b21423d.css.map": "./static/css/main.8b21423d.css.map",
+    "main.720aeca1.js.map": "./static/js/main.720aeca1.js.map"
   },
   "entrypoints": [
-    "static/css/main.e3cccb62.css",
-    "static/js/main.e21b39fc.js"
+    "static/css/main.8b21423d.css",
+    "static/js/main.720aeca1.js"
   ]
 }
