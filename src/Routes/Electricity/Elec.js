@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import './Elec.css'
 import '../../index.css'
+import shareContext from '../../Context/ShareContext'
+import { Link } from 'react-router-dom'
 export default function Elec() {
+  const [select, setselect] = useState("")
+  const { setProvider } = useContext(shareContext)
+
+  const handleChange = (e) => {
+    e.preventDefault()
+    setselect(e.target.value)
+  }
+  const PayElectricityBill = () => {
+    setProvider(select)
+  }
   return (
     <div className='cover'>
       <div className="Airtime-body">
@@ -17,7 +29,30 @@ export default function Elec() {
       <div className="mt-4 content p-4  bg-white">
         <h1 className='font-bold text-xl text-fuchsia-500 p-2'>NEPA Recharge</h1>
         <span className='text-sm text-gray-800 p-2'>Pay Your NEPA Bills Using Kinatech Pay Services</span>
+        <div className='mt-4 mx-9 rounded-lg'>
+          <label className='text-sm font-sans' htmlFor='Phone Number'>Select Elctricity Provider </label>
+          <div className="flex ">
 
+            
+            <select value={select} onChange={handleChange}  className="number text-sm text-center h-12 block">
+              <option value={''}>Select</option>
+              <option value={'abuja-electric'}> Abuja Electricity Distribution Company (AEDC)</option>
+              <option value={'eko-electric'}>Eko Electricity Distribution Company (EKEDC)</option>
+              <option value={'ibadan-electric'}>Ibadan Electricity Distribution Company (IBEDC)</option>
+              <option value={'jos-electric'}> Jos Electricity Distribution PLC (JEDplc)</option>
+              <option value={'kaduna-electric'}>Kaduna Electricity Distribution Company (KAEDCO)</option>
+              <option value={'ikeja-electric'}>Ikeja Electricity Distribution Company (KAEDCO)</option>
+              <option value={'kano-electric'}>Kano Electricity Distribution Company (KEDCO)</option>
+              <option value={'portharcourt-electric'}>Port Harcourt Electricity Distribution Company (PHED)</option>
+            </select>
+         
+          </div>
+          <div>
+            <Link to='/ElctricityForm' > <button onClick={PayElectricityBill} className='block bg-fuchsia-800 p-1 rounded-lg text-white'>Continue</button>
+          </Link>
+          </div>
+        </div>
+        
         <div className="md:grid md:grid-cols-2 lg:grid-cols-3">
 
           <div className="phone hover:text-white flex border-sm mt-4 mb-4 p-4">

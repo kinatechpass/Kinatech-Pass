@@ -9,6 +9,7 @@ import { Routes, Route } from 'react-router-dom';
 import Airtime from '../../Routes/Aitime/Airtime';
 import Data from '../../Routes/Data/Data';
 import Elec from '../../Routes/Electricity/Elec';
+import ElecForm from '../../Routes/Electricity/ElecForm';
 import Tv from '../../Routes/Tv/Tv';
 import Gifts from '../../Routes/Gifts/Gifts';
 import More from '../../Routes/More/More';
@@ -16,7 +17,10 @@ import JoinUs from '../../Routes/Join/JoinUs';
 import Login from '../../Routes/Login/Login';
 import Account from '../../Routes/Account/Account';
 import Form from '../../Routes/Aitime/Form';
-
+import MtnForm from '../../Routes/Data/MtnForm';
+import GloForm from '../../Routes/Data/GloForm';
+import AirtelForm from '../../Routes/Data/AirtelForm';
+import MobileForm from '../../Routes/Data/MobileForm';
 // import Tbody from '../Tailwind Body/Tbody';
 function Main() {
   return (
@@ -40,9 +44,13 @@ function Main() {
             <Route path='/Login' element={<Login />} />
             <Route path='/More' element={<More />} />
             <Route path='/Account' element={<Account />} />
-           <Route path='/Airtime/Form' element={<Form />} />
-
-  
+           <Route path='/ElctricityForm' element={<ElecForm />} />
+            <Route path='/Airtime/Form' element={<Form />} />
+            <Route path='/Data/Form' element={<MtnForm />} />
+           <Route path='/Data/glo-Form' element={<GloForm />} />
+          <Route path='/Data/9mobile-Form' element={<MobileForm />} />
+          <Route path='/Data/airtel-Form' element={<AirtelForm />} />
+   
    </Routes>
         <Footer />
       </div>

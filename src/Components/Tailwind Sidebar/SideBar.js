@@ -1,7 +1,8 @@
 import '../../index.css'
 import '../Tcss.css'
-import { MdSettings } from "react-icons/md";
+import { MdHome, MdSettings } from "react-icons/md";
 import { BsPhone } from "react-icons/bs";
+
 import { MdSignalWifi3Bar } from "react-icons/md";
 import { CgScreen } from "react-icons/cg";
 import { AiOutlineBulb } from "react-icons/ai";
@@ -37,31 +38,37 @@ function SideBar() {
 
  {/* sidebar body */}
       <div className="mx-2">
+        <div className="flex justify-center gap-1 py-3 cursor-pointer hover:opacity-50">
+          <Link to='/'><MdHome className={expandSidebar ? "sidebar-body-icons-true" : "sidebar-body-icons-false"}
+          /></Link><span onClick={() => (setExpandsideBar(false))} className={expandSidebar ? "inline-block" : "hidden lg:inline-block"}
+          > <Link to='/'> Home </Link><span style={{ visibility: 'hidden' }}>..</span></span>
+
+        </div>
       <div className="flex justify-center gap-1 py-3 cursor-pointer hover:opacity-50">
-        <BsPhone className={ expandSidebar ? "sidebar-body-icons-true":"sidebar-body-icons-false" }
-         /><span className={ expandSidebar ? "inline-block" : "hidden lg:inline-block"  }
+          <Link to='/Airtime'><BsPhone className={ expandSidebar ? "sidebar-body-icons-true":"sidebar-body-icons-false" }
+         /></Link><span onClick={()=>(setExpandsideBar(false))} className={ expandSidebar ? "inline-block" : "hidden lg:inline-block"  }
           > <Link to='/Airtime'> Buy Phone Airtime </Link><span style={{visibility:'hidden'}}>..</span></span>
 
       </div>
       <div className="flex justify-center gap-1 py-3 cursor-pointer hover:opacity-50">
-        <MdSignalWifi3Bar className="transition ease-in-out delay-150 text-4xl 
+          <Link to='/Data'>  <MdSignalWifi3Bar className="transition ease-in-out delay-150 text-4xl 
         hover:-translate-y-1 hover:scale-110 duration-300 lg:text-2xl 
-        "/><span className={expandSidebar ? "inline-block" : "hidden lg:inline-block"}><Link to='/Data'> Buy Internet Data </Link><span style={{visibility:'hidden'}}>..</span></span>
+        "/></Link><span onClick={() => (setExpandsideBar(false))} className={expandSidebar ? "inline-block" : "hidden lg:inline-block"}><Link to='/Data'> Buy Internet Data </Link><span style={{visibility:'hidden'}}>..</span></span>
       </div>
       <div className="flex justify-center gap-1 py-3 cursor-pointer hover:opacity-50">
-        <CgScreen className="transition ease-in-out delay-150 text-4xl 
+          <Link to='/Tv'><CgScreen className="transition ease-in-out delay-150 text-4xl 
         hover:-translate-y-1 hover:scale-110 duration-300 lg:text-2xl 
-        " /><span className={expandSidebar ? "inline-block" : "hidden lg:inline-block"}><Link to='/Tv'> Pay TV Subscription </Link></span>
+        " /></Link><span onClick={() => (setExpandsideBar(false))} className={expandSidebar ? "inline-block" : "hidden lg:inline-block"}><Link to='/Tv'> Pay TV Subscription </Link></span>
       </div>
       <div className="flex justify-center gap-1 py-3 cursor-pointer hover:opacity-50">
-        <AiOutlineBulb className="transition ease-in-out delay-150 text-4xl 
+          <Link to='/Electricity'><AiOutlineBulb className="transition ease-in-out delay-150 text-4xl 
         hover:-translate-y-1 hover:scale-110 duration-300 lg:text-2xl 
-        " /><span className={expandSidebar ? "inline-block" : "hidden lg:inline-block"}><Link to='/Electricity'> Pay Electricity Bills </Link><span style={{visibility:'hidden'}}>..</span></span>
+        " /></Link><span onClick={() => (setExpandsideBar(false))} className={expandSidebar ? "inline-block" : "hidden lg:inline-block"}><Link to='/Electricity'> Pay Electricity Bills </Link><span style={{visibility:'hidden'}}>..</span></span>
       </div>
       <div className="flex justify-center gap-1 py-3 cursor-pointer hover:opacity-50">
-        <CiCircleMore className="transition ease-in-out delay-150 text-4xl 
+          <Link to='/More'> <CiCircleMore className="transition ease-in-out delay-150 text-4xl 
         hover:-translate-y-1 hover:scale-110 duration-300 lg:text-2xl 
-        "/><span className={ expandSidebar ? "inline-block" : "hidden lg:inline-block"  }>
+        "/></Link><span onClick={() => (setExpandsideBar(false))} className={ expandSidebar ? "inline-block" : "hidden lg:inline-block"  }>
           <Link to='/More'>And Lots More...</Link><span style={{visibility:'hidden'}}>...</span></span>
       </div>
       {/* <div>

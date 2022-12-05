@@ -7,10 +7,11 @@ import { useState } from 'react';
 
 function App() {
      const [Text, setText] = useState("Empty")
+     const [provider, setProvider] = useState("Empty");
   return (
     <div className="App">
       <HashRouter>
-        <shareContext.Provider value={{Text, setText}}>
+        <shareContext.Provider value={{Text, setText, provider, setProvider}}>
           <Main />
         </shareContext.Provider>
     </HashRouter>
