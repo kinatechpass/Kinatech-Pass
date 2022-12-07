@@ -11,6 +11,7 @@ import Data from '../../Routes/Data/Data';
 import Elec from '../../Routes/Electricity/Elec';
 import ElecForm from '../../Routes/Electricity/ElecForm';
 import Tv from '../../Routes/Tv/Tv';
+import DSTVForm from '../../Routes/Tv/DSTVForm';
 import Gifts from '../../Routes/Gifts/Gifts';
 import More from '../../Routes/More/More';
 import JoinUs from '../../Routes/Join/JoinUs';
@@ -21,6 +22,7 @@ import MtnForm from '../../Routes/Data/MtnForm';
 import GloForm from '../../Routes/Data/GloForm';
 import AirtelForm from '../../Routes/Data/AirtelForm';
 import MobileForm from '../../Routes/Data/MobileForm';
+import GOTVForm from '../../Routes/Tv/GOTVForm';
 // import Tbody from '../Tailwind Body/Tbody';
 function Main() {
   return (
@@ -39,6 +41,8 @@ function Main() {
             <Route path='/Data' element={<Data />} />
             <Route path='/Electricity' element={<Elec />} />
             <Route path='/Tv' element={<Tv />} />
+             <Route path='/Tv/DSTVform' element={<DSTVForm />} />
+          <Route path='/Tv/GOTVform' element={<GOTVForm />} />
             <Route path='/Gifts' element={<Gifts />} />
             <Route path='/joinUs' element={<JoinUs />} />
             <Route path='/Login' element={<Login />} />

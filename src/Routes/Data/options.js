@@ -170,3 +170,31 @@ export const AirtelOptions = [
     value: "airt-11000 "
   },
 ]
+
+
+export const MobileOptions = [
+  {
+    label: "Select Value",
+
+  },
+  {
+    label: "9mobile Data 1GB – 30 Days",
+    price: "990",
+    value: "9MOB1000"
+  },
+  {
+    label: "9mobile Data 2.5GB – 30 Days",
+    price: "1990",
+    value: "9MOB34500"
+  },
+  {
+    label: " 9mobile Data 11.5GB – 30 Days",
+    price: "7970",
+    value: "9MOB8000"
+  },
+  {
+    label: " 9mobile Data 15GB – 30 Days",
+    price: "9900",
+    value: "9MOB5000"
+  }
+]

@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import './Register.css'
 import '../../index.css'
 import { HiOutlineMail, HiLockClosed } from "react-icons/hi";
-import { BsTelephoneFill } from "react-icons/bs"
+import { BsTelephoneFill, BsKeyboard } from "react-icons/bs"
 import { Link } from 'react-router-dom';
 
 export default function JoinUs() {
@@ -55,7 +55,7 @@ export default function JoinUs() {
                   <div className="mt-7">
                     <small className='block block text-left ml-9 mt-2 cursor-pointer text-fuchsia-700'>Optional</small>
                   <div className="flex mx-9 rounded-lg">
-                    <BsTelephoneFill className='icons p-1 h-12 text-fuchsia-700' />
+                      <BsKeyboard className='icons p-1 h-12 text-fuchsia-700' />
                     <input type="Text" ref={referalRef} className="ref text-sm text-center h-12 block" name='ref' placeholder='Referal Code...' />
                   </div>
                 </div>
@@ -76,7 +76,7 @@ export default function JoinUs() {
 
 
           <div className="hidden md:block formImage lg:col-span-2">
-            <img className='img' src='./assets/people2.jpeg'/>
+            <img className='img h-full' src='./assets/people2.jpeg' style={{ width: '100%', objectFit: 'cover' }} />
           </div>
         </div>
 

@@ -1,18 +1,66 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useState } from 'react'
 import '../../index.css'
 import { HiOutlineMail, HiLockClosed } from "react-icons/hi";
 import { BsTelephoneFill } from "react-icons/bs"
 import { BsFillHddNetworkFill } from "react-icons/bs"
 import { TbCurrencyNaira } from "react-icons/tb"
 import { Link } from 'react-router-dom';
-import { mtnOptions } from './options.js'
+import { MobileOptions } from './options.js'
+import { usePaystackPayment } from 'react-paystack';
 
-export default function MtnForm() {
-  const GLOIdRef = useRef()
-  const GLOPhoneRef = useRef()
-  const GLOAmountRef = useRef()
+export default function MobileForm() {
+
+  const [GloValue, setGloValue] = useState("")
+  const [amount, setAmount] = useState("")
+  const [phone, setphone] = useState()
+  const [id, setid] = useState()
+
+  const handleChange = (e) => {
+    setGloValue(e.target.value);
+    const selectedIndex = e.target.options.selectedIndex;
+    setAmount(e.target.options[selectedIndex].getAttribute('data-key'))
+
+  }
   // const referalRef = useRef()
 
+  const handleAmountInputChange = (e) => {
+    e.preventDefault()
+    setAmount(e.target.value)
+  }
+
+
+  const handlePhoneInputChange = (e) => {
+    setphone(e.target.value)
+  }
+  const handleIdInputChange = (e) => {
+    setid(e.target.value)
+  }
+
+  //config
+  const config = {
+    reference: (new Date()).getTime(),
+    email: "kinatechinnovativelimited@gmail.com",
+    amount: amount * 100,
+    publicKey: 'pk_test_80f9a1b1ddbd716bf42b6371303477950b3f93cf',
+  };
+
+  const handlePaystackSuccessAction = (reference) => {
+    // Implementation for whatever you want to do with reference and after success call.
+    console.log(reference);
+
+  };
+
+  // you can call this function anything
+  const handlePaystackCloseAction = () => {
+    // implementation for  whatever you want to do when the Paystack dialog closed.
+    console.log('closed')
+  }
+  const initializePayment = usePaystackPayment(config);
+
+  const pay = (e) => {
+    e.preventDefault()
+    initializePayment(handlePaystackSuccessAction, handlePaystackCloseAction)
+  }
   return (
     <div className='cover '>
       <div className="Airtime-body">
@@ -29,7 +77,7 @@ export default function MtnForm() {
 
         <div className="cont md:grid md:grid-cols-2 lg:grid-cols-3 divide-xborder-gray-500">
           <div className="form text-center">
-            <h1 className='font-bold text-xl text-fuchsia-500 p-2'>GLO DATA VTU</h1>
+            <h1 className='font-bold text-xl text-fuchsia-500 p-2'>9Mobile DATA VTU</h1>
             <span className='text-sm text-gray-800 p-2'>Get Data At Cheapest Prices</span>
             <form className=''>
               <div>
@@ -40,7 +88,7 @@ export default function MtnForm() {
                     <div className="flex ">
 
                       <BsFillHddNetworkFill className='icons p-1 h-12 text-fuchsia-700' />
-                      <input type="text" ref={GLOIdRef} className="number text-sm text-center h-12 block" name='_Id' value={'mtn'} />
+                      <input type="text" className="number text-sm text-center h-12 block" name='_Id' value={'etisalat'} onChange={handleIdInputChange} />
                     </div>
                   </div>
 
@@ -49,9 +97,9 @@ export default function MtnForm() {
                     <div className="flex ">
 
                       <BsFillHddNetworkFill className='icons p-1 h-12 text-fuchsia-700' />
-                      <select className="number text-sm text-center h-12 block">
-                        {mtnOptions.map(mtnOption => (
-                          <option value={mtnOption.value}> {mtnOption.label} </option>
+                      <select value={GloValue} onChange={handleChange} className="number text-sm text-center h-12 block">
+                        {MobileOptions.map(MobileOption => (
+                          <option value={MobileOption.value} data-key={MobileOption.price}> {MobileOption.label} </option>
                         ))}
                       </select>
                     </div>
@@ -62,7 +110,7 @@ export default function MtnForm() {
                     <div className="flex ">
 
                       <BsTelephoneFill className='icons p-1 h-12 text-fuchsia-700' />
-                      <input type="text" ref={GLOPhoneRef} className="number text-sm text-center h-12 block" name='number' placeholder='Phone Number' />
+                      <input type="text" value={phone} className="number text-sm text-center h-12 block" name='number' placeholder='Phone Number' onChange={handlePhoneInputChange} />
                     </div>
                   </div>
 
@@ -71,7 +119,7 @@ export default function MtnForm() {
                     <div className="flex ">
 
                       <TbCurrencyNaira className='icons p-1 h-12 text-fuchsia-700' />
-                      <input type="text" ref={GLOAmountRef} className="number text-sm text-center h-12 block" name='amount' placeholder='Amount' />
+                      <input type="text" className="number text-sm text-center h-12 block" name='amount' value={amount} onChange={handleAmountInputChange} />
                     </div>
                   </div>
 
@@ -79,7 +127,7 @@ export default function MtnForm() {
 
 
                   <div className="mt-4">
-                    <button className='submit border border-fuchsia-700 rounded-lg p-2 w-10/12 hover:bg-fuchsia-700 hover:text-white cursor-pointer' type='submit'>Buy Now!</button>
+                    <button className='submit border border-fuchsia-700 rounded-lg p-2 w-10/12 hover:bg-fuchsia-700 hover:text-white cursor-pointer' type='submit' onClick={pay}>Pay Now!</button>
 
                     <small className='block ml-9 mt-2 mb-2 '>Not Redirected? <span className='cursor-pointer text-fuchsia-700'>
                       <Link>Click Here!</Link>
@@ -94,7 +142,7 @@ export default function MtnForm() {
 
 
           <div className=" hidden md:block formImage lg:col-span-2">
-            <img className='img' src='./assets/multichannel.jpeg' />
+            <img className='img h-full' src='./assets/multichannel.jpeg' style={{ width: '100%', objectFit: 'cover' }} />
           </div>
         </div>
 

@@ -71,7 +71,7 @@ export default function Login() {
 
 
           <div className="hidden md:block formImage lg:col-span-2">
-            <img className='img' src='./assets/Login.jpg' />
+            <img className='img' src='./assets/Login.jpg' style={{ width: '100%', objectFit: 'cover' }} />
           </div>
         </div>
 

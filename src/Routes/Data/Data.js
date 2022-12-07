@@ -52,7 +52,7 @@ export default function Data() {
 
           </div>
     </Link>
-          <Link to='/Data'>
+          <Link to='/Data/9mobile-Form'>
           <div className="glo hover:text-white flex border-sm mt-4 mb-4 p-4">
             <img className='image mt-4' width={'70px'} src='./assets/mobile.jpg' />
             <div className='mx-4'>

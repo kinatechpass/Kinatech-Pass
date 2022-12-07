@@ -6,14 +6,15 @@ import { BsFillHddNetworkFill } from "react-icons/bs"
 import { TbCurrencyNaira } from "react-icons/tb"
 import { Link } from 'react-router-dom';
 import { mtnOptions } from './options.js'
+import { usePaystackPayment } from 'react-paystack';
 
 export default function MtnForm() {
   const [MtnValue, setMtnValue] = useState("")
-  const [amount, setAmount] = useState("")
 
-  const MtnIdRef = useRef()
-  const MtnPhoneRef = useRef()
-  const MtnAmountRef = useRef()
+  const [amount, setAmount] = useState("")
+  const [phone, setphone] = useState()
+  const [id, setid] = useState()
+
 
 const handleChange = (e) => {
   setMtnValue(e.target.value);
@@ -21,6 +22,47 @@ const handleChange = (e) => {
   setAmount(e.target.options[selectedIndex].getAttribute('data-key'))
 
 }
+
+ const handleAmountInputChange = (e) => {
+  e.preventDefault()
+    setAmount(e.target.value)
+ }
+
+ 
+  const handlePhoneInputChange = (e) => {
+    setphone(e.target.value)
+  }
+  const handleIdInputChange = (e) => {
+    setid(e.target.value)
+  }
+
+  //config
+  const config = {
+    reference: (new Date()).getTime(),
+    email: "kinatechinnovativelimited@gmail.com",
+    amount: amount * 100,
+    publicKey: 'pk_test_80f9a1b1ddbd716bf42b6371303477950b3f93cf',
+  };
+
+  const handlePaystackSuccessAction = (reference) => {
+    // Implementation for whatever you want to do with reference and after success call.
+    console.log(reference);
+
+  };
+
+  // you can call this function anything
+  const handlePaystackCloseAction = () => {
+    // implementation for  whatever you want to do when the Paystack dialog closed.
+    console.log('closed')
+  }
+
+
+  const initializePayment = usePaystackPayment(config);
+
+  const pay = (e) => {
+    e.preventDefault()
+    initializePayment(handlePaystackSuccessAction, handlePaystackCloseAction)
+  }
   return (
     <div className='cover '>
       <div className="Airtime-body">
@@ -48,7 +90,8 @@ const handleChange = (e) => {
                     <div className="flex ">
 
                       <BsFillHddNetworkFill className='icons p-1 h-12 text-fuchsia-700' />
-                      <input type="text" ref={MtnIdRef} className="number text-sm text-center h-12 block" name='_Id' value={'mtn'} />
+                      <input type="text" onChange={handleIdInputChange} className="number text-sm text-center h-12 block" name='_Id' 
+                      value={'mtn'} />
                     </div>
                   </div>
 
@@ -70,7 +113,7 @@ const handleChange = (e) => {
                     <div className="flex ">
 
                       <BsTelephoneFill className='icons p-1 h-12 text-fuchsia-700' />
-                      <input type="text" ref={MtnPhoneRef} className="number text-sm text-center h-12 block" name='number' placeholder='Phone Number' />
+                      <input type="text" value={phone} onChange={handlePhoneInputChange} className="number text-sm text-center h-12 block" name='number' placeholder='Phone Number' />
                     </div>
                   </div>
 
@@ -79,7 +122,7 @@ const handleChange = (e) => {
                     <div className="flex ">
 
                       <TbCurrencyNaira className='icons p-1 h-12 text-fuchsia-700' />
-                      <input type="text" ref={MtnAmountRef} className="number text-sm text-center h-12 block" name='amount' value={amount} />
+                      <input type="text" value={amount} onChange={handleAmountInputChange} className="number text-sm text-center h-12 block" name='amount' />
                     </div>
                   </div>
 
@@ -87,7 +130,7 @@ const handleChange = (e) => {
 
 
                   <div className="mt-4">
-                    <button className='submit border border-fuchsia-700 rounded-lg p-2 w-10/12 hover:bg-fuchsia-700 hover:text-white cursor-pointer' type='submit'>Buy Now!</button>
+                    <button className='submit border border-fuchsia-700 rounded-lg p-2 w-10/12 hover:bg-fuchsia-700 hover:text-white cursor-pointer' type='submit' onClick={pay}>Pay Now!</button>
 
                     <small className='block ml-9 mt-2 mb-2 '>Not Redirected? <span className='cursor-pointer text-fuchsia-700'>
                       <Link>Click Here! </Link>
@@ -102,7 +145,7 @@ const handleChange = (e) => {
 
 
           <div className=" hidden md:block formImage lg:col-span-2">
-            <img className='img' src='./assets/multichannel.jpeg' />
+            <img className='img h-full' src='./assets/multichannel.jpeg' style={{ width: '100%', objectFit: 'cover' }} />
           </div>
         </div>
 

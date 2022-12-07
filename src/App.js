@@ -4,15 +4,17 @@ import Main from './Components/Main/Main';
 import { HashRouter } from 'react-router-dom'
 import { shareContext } from './Context/ShareContext'
 import { useState } from 'react';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
      const [Text, setText] = useState("Empty")
-     const [provider, setProvider] = useState("Empty");
+     const [provider, setProvider] = useState();
   return (
     <div className="App">
       <HashRouter>
         <shareContext.Provider value={{Text, setText, provider, setProvider}}>
           <Main />
+          <ToastContainer />
         </shareContext.Provider>
     </HashRouter>
       {/* <Router>

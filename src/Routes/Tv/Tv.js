@@ -1,6 +1,7 @@
 import React from 'react'
 import './Tv.css'
 import '../../index.css'
+import { Link } from 'react-router-dom'
 export default function Tv() {
   return (
     <div className='cover'>
@@ -19,7 +20,7 @@ export default function Tv() {
         <span className='text-sm text-gray-800 p-2'>Renew Tv Subscription Using Kinatech Pay Services</span>
 
         <div className="md:grid md:grid-cols-2 lg:grid-cols-3">
-
+       <Link to='/Tv/DSTVForm'>
           <div className="phone hover:text-white flex border-sm mt-4 mb-4 p-4">
             <img className='image mt-4' width={'70px'} src='./assets/dstv.jpg' />
             <div className='mx-2'>
@@ -29,7 +30,8 @@ export default function Tv() {
 
 
           </div>
-
+        </Link>
+        <Link to='/TV/GOTVForm'>
           <div className="phone hover:text-white flex border-sm mt-4 mb-4 p-4">
             <img className='image mt-4' width={'70px'} src='./assets/Gotv.jpg' />
             <div className='mx-2'>
@@ -39,7 +41,7 @@ export default function Tv() {
 
 
           </div>
-
+   </Link>
          
 {/* 
 

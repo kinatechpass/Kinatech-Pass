@@ -6,12 +6,13 @@ import { BsFillHddNetworkFill } from "react-icons/bs"
 import { TbCurrencyNaira } from "react-icons/tb"
 import { Link } from 'react-router-dom';
 import { AirtelOptions } from './options.js'
+import { usePaystackPayment } from 'react-paystack';
 
 export default function MtnForm() {
-  const AirtelIdRef = useRef()
-  const AirtelPhoneRef = useRef()
-  const AirtelAmountRef = useRef()
-  // const referalRef = useRef()
+  // const AirtelIdRef = useRef()
+  // const AirtelPhoneRef = useRef()
+  // const AirtelAmountRef = useRef()
+  // // const referalRef = useRef()
 
   const [AirtelValue, setAirtelValue] = useState("")
   const [amount, setAmount] = useState("")
@@ -22,6 +23,52 @@ export default function MtnForm() {
     setAmount(e.target.options[selectedIndex].getAttribute('data-key'))
 
   }
+
+  const [phone, setphone] = useState()
+  const [number, setnumber] = useState()
+
+  //handlers
+  const handlePhoneInputChange = (e) => {
+    setphone(e.target.value)
+  }
+  const handleNumberInputChange = (e) => {
+    setnumber(e.target.value)
+  }
+
+  //config
+  const config = {
+    reference: (new Date()).getTime(),
+    email: "kinatechinnovativelimited@gmail.com",
+    amount: amount * 100,
+    publicKey: 'pk_test_80f9a1b1ddbd716bf42b6371303477950b3f93cf',
+  };
+
+  const handlePaystackSuccessAction = (reference) => {
+    // Implementation for whatever you want to do with reference and after success call.
+    console.log(reference);
+
+  };
+
+  // you can call this function anything
+  const handlePaystackCloseAction = () => {
+    // implementation for  whatever you want to do when the Paystack dialog closed.
+    console.log('closed')
+  }
+
+  //paystack props
+  // const componentProps = {
+  //   ...config,
+  //   text: 'PayNow',
+  //   onSuccess: (reference) => handlePaystackSuccessAction(reference),
+  //   onClose: handlePaystackCloseAction,
+  // };
+  const initializePayment = usePaystackPayment(config);
+
+  const pay = (e) => {
+    e.preventDefault()
+    initializePayment(handlePaystackSuccessAction, handlePaystackCloseAction)
+  }
+
   return (
     <div className='cover '>
       <div className="Airtime-body">
@@ -49,7 +96,7 @@ export default function MtnForm() {
                     <div className="flex ">
 
                       <BsFillHddNetworkFill className='icons p-1 h-12 text-fuchsia-700' />
-                      <input type="text" ref={AirtelIdRef} className="number text-sm text-center h-12 block" name='_Id' value={'airtel'} />
+                      <input type="text" className="number text-sm text-center h-12 block" name='_Id' value={'airtel'} />
                     </div>
                   </div>
 
@@ -71,7 +118,7 @@ export default function MtnForm() {
                     <div className="flex ">
 
                       <BsTelephoneFill className='icons p-1 h-12 text-fuchsia-700' />
-                      <input type="text" ref={AirtelPhoneRef} className="number text-sm text-center h-12 block" name='number' placeholder='Phone Number' />
+                      <input type="text" value={phone} onChange={handlePhoneInputChange} className="number text-sm text-center h-12 block" name='number' placeholder='Phone Number' />
                     </div>
                   </div>
 
@@ -80,7 +127,7 @@ export default function MtnForm() {
                     <div className="flex ">
 
                       <TbCurrencyNaira className='icons p-1 h-12 text-fuchsia-700' />
-                      <input type="text" ref={AirtelAmountRef} className="number text-sm text-center h-12 block" name='amount' value={amount} />
+                      <input type="text"  className="number text-sm text-center h-12 block" name='amount' value={amount} />
                     </div>
                   </div>
 
@@ -88,7 +135,7 @@ export default function MtnForm() {
 
 
                   <div className="mt-4">
-                    <button className='submit border border-fuchsia-700 rounded-lg p-2 w-10/12 hover:bg-fuchsia-700 hover:text-white cursor-pointer' type='submit'>Buy Now!</button>
+                    <button className='submit border border-fuchsia-700 rounded-lg p-2 w-10/12 hover:bg-fuchsia-700 hover:text-white cursor-pointer' type='submit' onClick={pay}>Pay Now!</button>
 
                     <small className='block ml-9 mt-2 mb-2 '>Not Redirected? <span className='cursor-pointer text-fuchsia-700'>
                       <Link>Click Here!</Link>
@@ -103,7 +150,7 @@ export default function MtnForm() {
 
 
           <div className=" hidden md:block formImage lg:col-span-2">
-            <img className='img' src='./assets/multichannel.jpeg' />
+            <img className='img h-full' src='./assets/multichannel.jpeg' style={{width:'100%', objectFit:'cover'}}/>
           </div>
         </div>
 

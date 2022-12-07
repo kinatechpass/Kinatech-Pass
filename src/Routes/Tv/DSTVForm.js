@@ -1,25 +1,29 @@
 import React, { useContext, useState } from 'react'
 import '../../index.css'
 import { HiOutlineMail, HiLockClosed } from "react-icons/hi";
-import { BsTelephoneFill } from "react-icons/bs"
+import { BsTelephoneFill, BsSdCard } from "react-icons/bs"
 import { BsFillHddNetworkFill } from "react-icons/bs"
+import { CgKeyboard } from "react-icons/cg"
 import { TbCurrencyNaira } from "react-icons/tb"
 import { Link } from 'react-router-dom';
-import { GloOptions } from './options.js'
+import { DSTVOptions } from './options.js'
 import { usePaystackPayment } from 'react-paystack';
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
-export default function GloForm() {
+export default function DSTVForm() {
 
-  const [GloValue, setGloValue] = useState("")
+  const [DSTVValue, setDSTVValue] = useState("")
   const [amount, setAmount] = useState("")
   const [phone, setphone] = useState()
   const [id, setid] = useState()
+  const [Snumber, setSnumber] = useState()
 
   const handleChange = (e) => {
-    setGloValue(e.target.value);
+    setDSTVValue(e.target.value);
     const selectedIndex = e.target.options.selectedIndex;
     setAmount(e.target.options[selectedIndex].getAttribute('data-key'))
-
+    setid(e.target.value)
   }
   // const referalRef = useRef()
 
@@ -28,6 +32,10 @@ export default function GloForm() {
     setAmount(e.target.value)
   }
 
+  const handleNumberInputChange = (e) => {
+    e.preventDefault()
+    setSnumber(e.target.value)
+  }
 
   const handlePhoneInputChange = (e) => {
     setphone(e.target.value)
@@ -47,6 +55,11 @@ export default function GloForm() {
   const handlePaystackSuccessAction = (reference) => {
     // Implementation for whatever you want to do with reference and after success call.
     console.log(reference);
+    toast.success("succesfull!", {
+      position: toast.POSITION.TOP_CENTER
+    });
+
+    <ToastContainer />
 
   };
 
@@ -54,7 +67,14 @@ export default function GloForm() {
   const handlePaystackCloseAction = () => {
     // implementation for  whatever you want to do when the Paystack dialog closed.
     console.log('closed')
+    toast.error("Some Error Occured, Pls Try again!", {
+      position: toast.POSITION.TOP_CENTER,
+       
+    });
+   
+    
   }
+
   const initializePayment = usePaystackPayment(config);
 
   const pay = (e) => {
@@ -77,31 +97,42 @@ export default function GloForm() {
 
         <div className="cont md:grid md:grid-cols-2 lg:grid-cols-3 divide-xborder-gray-500">
           <div className="form text-center">
-            <h1 className='font-bold text-xl text-fuchsia-500 p-2'>DATA VTU</h1>
-            <span className='text-sm text-gray-800 p-2'>Get Data At Cheapest Prices</span>
+            <h1 className='font-bold text-xl text-fuchsia-500 p-2'>DSTV SUB</h1>
+            <span className='text-sm text-gray-800 p-2'>Get 20% off servicefee When You Buy From Wallet.</span>
             <form className=''>
               <div>
                 <div className="inputs mt-4">
 
                   <div className='mt-4 mx-9 rounded-lg'>
-                    <label className='text-sm font-sans' htmlFor='Phone Number'>NetWork _Id </label>
+                    <p className='text-sm font-bold mb-4'> Note: ₦39 Service Fee Apply for all charges</p>
+
+                    <label className='text-sm font-sans' htmlFor='Phone Number'>Service _Id </label>
                     <div className="flex ">
 
-                      <BsFillHddNetworkFill className='icons p-1 h-12 text-fuchsia-700' />
-                      <input type="text" className="number text-sm text-center h-12 block" name='_Id' value={'glo'} onChange={handleIdInputChange} />
+                      <BsFillHddNetworkFill className='bg-purple-200 icons p-1 h-12 text-fuchsia-700' />
+                      <input type="text" className="bg-purple-200 number text-sm text-center h-12 block" name='_Id' value={'dstv'} readOnly />
                     </div>
                   </div>
 
                   <div className='mt-4 mx-9 rounded-lg'>
-                    <label className='text-sm font-sans' htmlFor='Phone Number'>Select Data bundles </label>
+                    <label className='text-sm font-sans' htmlFor='Phone Number'>Select Package </label>
                     <div className="flex ">
 
                       <BsFillHddNetworkFill className='icons p-1 h-12 text-fuchsia-700' />
-                      <select value={GloValue} onChange={handleChange} className="number text-sm text-center h-12 block">
-                        {GloOptions.map(GloOption => (
-                          <option value={GloOption.value} data-key={GloOption.price}> {GloOption.label} </option>
+                      <select value={DSTVValue} onChange={handleChange} className="number text-sm text-center h-12 block w-10/12">
+                        {DSTVOptions.map(DSTVOption => (
+                          <option value={DSTVOption.value} data-key={DSTVOption.price}> {DSTVOption.label} </option>
                         ))}
                       </select>
+                    </div>
+                  </div>
+
+                  <div className='mt-4 mx-9 rounded-lg'>
+                    <label className='text-sm font-sans' htmlFor='Phone Number'>Variation _Id </label>
+                    <div className="flex ">
+
+                      <BsSdCard className='bg-purple-200 icons p-1 h-12 text-fuchsia-700' />
+                      <input type="text" value={id} className="number text-sm text-center h-12 block bg-purple-200" name='number' placeholder='id' onChange={handleIdInputChange} readOnly/>
                     </div>
                   </div>
 
@@ -110,16 +141,26 @@ export default function GloForm() {
                     <div className="flex ">
 
                       <BsTelephoneFill className='icons p-1 h-12 text-fuchsia-700' />
-                      <input type="text" value={phone} className="number text-sm text-center h-12 block" name='number' placeholder='Phone Number'  onChange={handlePhoneInputChange}/>
+                      <input type="text" value={phone} className="number text-sm text-center h-12 block" name='number' placeholder='Phone Number' onChange={handlePhoneInputChange} />
                     </div>
                   </div>
+         
+                  <div className='mt-4 mx-9 rounded-lg'>
+                    <label className='text-sm font-sans' htmlFor='Phone Number'>SmartCard Number </label>
+                    <div className="flex ">
+
+                      <CgKeyboard className='icons p-1 h-12 text-fuchsia-700' />
+                      <input type="text" className="number text-sm text-center h-12 block" name='amount' value={Snumber} onChange={handleNumberInputChange} />
+                    </div>
+                  </div>
+                
 
                   <div className='mt-4 mx-9 rounded-lg'>
                     <label className='text-sm font-sans' htmlFor='Phone Number'>Amount </label>
                     <div className="flex ">
 
-                      <TbCurrencyNaira className='icons p-1 h-12 text-fuchsia-700' />
-                      <input type="text" className="number text-sm text-center h-12 block" name='amount' value={amount} onChange={handleAmountInputChange} />
+                      <TbCurrencyNaira className='bg-purple-200 icons p-1 h-12 text-fuchsia-700' />
+                      <input type="text" className="bg-purple-200 number text-sm text-center h-12 block" name='amount' value={amount} onChange={handleAmountInputChange} readOnly />
                     </div>
                   </div>
 
@@ -142,7 +183,7 @@ export default function GloForm() {
 
 
           <div className=" hidden md:block formImage lg:col-span-2">
-            <img className='img h-full' src='./assets/multichannel.jpeg' style={{ width: '100%', objectFit: 'cover' }} />
+            <img className='img h-full' src='./assets/design1.jpg' style={{ width: '100%', objectFit: 'contain' }} />
           </div>
         </div>
 

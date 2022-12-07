@@ -13,6 +13,7 @@ export default function Elec() {
   }
   const PayElectricityBill = () => {
     setProvider(select)
+    localStorage.setItem("savedProvider", select)
   }
   return (
     <div className='cover'>
@@ -34,7 +35,7 @@ export default function Elec() {
           <div className="flex ">
 
             
-            <select value={select} onChange={handleChange}  className="number text-sm text-center h-12 block">
+            <select value={select} onChange={handleChange}  className="number w-3/4 text-sm text-center h-12 block">
               <option value={''}>Select</option>
               <option value={'abuja-electric'}> Abuja Electricity Distribution Company (AEDC)</option>
               <option value={'eko-electric'}>Eko Electricity Distribution Company (EKEDC)</option>

@@ -11,8 +11,8 @@ function Body() {
   
   
   return ( 
-    <div className='cover'>
-      <div className='body '>
+    <div className='cover '>
+      <div className='body'>
         <div className='md:grid grid-cols-2'>
         <div className="hero md:block justify-center ">
 
