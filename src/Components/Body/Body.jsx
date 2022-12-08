@@ -240,7 +240,7 @@ function Body() {
            ">
           <Zoom duration={4000}>
               <div className="img ">
-                    <img src='./assets/Approve.png' />
+                    <img src='./assets/approve.png' />
               </div>
           </Zoom>
            <Zoom duration={4000}>

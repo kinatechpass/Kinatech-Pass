@@ -65,7 +65,7 @@ export default function Data() {
    </Link>
           <Link to='/Data'>
           <div className="smile hover:text-white flex border-sm mt-4 mb-4 p-4">
-            <img className='image mt-4' width={'70px'} src='./assets/smile.jpg' />
+            <img className='image mt-4' width={'70px'} src='./assets/Smile.jpg' />
             <div className=''>
               <span className='font-bold text-gray-800'>Smile DATA</span>
               <small className='block font-sans' style={{ fontSize: '12px' }}>Smile Data - Get instant Bonus</small>

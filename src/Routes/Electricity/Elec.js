@@ -57,7 +57,7 @@ export default function Elec() {
         <div className="md:grid md:grid-cols-2 lg:grid-cols-3">
 
           <div className="phone hover:text-white flex border-sm mt-4 mb-4 p-4">
-            <img className='image mt-4' width={'70px'} src='./assets/ikeja.jpg' />
+            <img className='image mt-4' width={'70px'} src='./assets/Ikeja.jpg' />
             <div className='mx-4'>
               <span className='font-bold text-sm hover:text-white text-gray-800'>Ikeja Electric Payment - IKEDC </span>
               <small className='block font-sans' style={{ fontSize: '12px' }}>Prepaid And Postpaid IKEDC Payments</small>
