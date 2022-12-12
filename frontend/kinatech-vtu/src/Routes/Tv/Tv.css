@@ -1,0 +1,33 @@
+.Airtime-body {
+  /* display: flex; */
+  /* background-color: white; */
+  /* transform: translate(1rem, 5rem); */
+  width: 100%;
+  margin-left: 10px;
+  padding-left: 20px;
+  padding-top: 70px;
+}
+
+.btnn {
+  background: linear-gradient(to left, #A91079, #4b0377 105%)
+}
+
+.phone {
+  width: 18rem;
+  border: 1.5px solid #efefef;
+  transition: 1s;
+}
+
+.phone:hover {
+
+  background: linear-gradient(to left, #A91079, #4b0377 105%);
+  transition: 2s;
+}
+
+
+@media screen and (min-width:800px) {
+  .Airtime-body {
+    width: 100%;
+    padding: 70px;
+  }
+}

@@ -1,0 +1,39 @@
+.cont {}
+
+.formImage {}
+
+input {
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  border-left: none;
+  border-radius: 10px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  outline: none;
+}
+
+.icon {
+  width: 15%;
+  border: 1px solid #e5e7eb;
+  border-right: none;
+  border-radius: 10px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.icons {
+  width: 10%;
+  border: 1px solid #e5e7eb;
+  border-right: none;
+  border-radius: 10px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.submit {
+  transition: 0.5s;
+}
+
+/* .img{
+  object-fit: cover;
+} */

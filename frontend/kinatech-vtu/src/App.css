@@ -1,0 +1,45 @@
+/* :root{
+  primary:
+} */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  font-family: 'segoe ui';
+  background-color: #ede9fe;
+  
+}
+.parent{
+ background-color: black;
+  padding-top: 41.7rem;
+}
+.loadDiv{
+ 
+  /* background-color: red; */
+ position: absolute;
+  top: 20%;
+background-color: black;
+color: plum;
+  /* transform: translate(-50%, -50%); */
+  width: 100%;
+  height: fit-content;
+ 
+
+}
+.loader{
+  margin: auto;
+  /* width: 30%; */
+  aspect-ratio: 16 / 16;
+  
+  /* position: absolute;
+  top: 50%;
+  left: 50%; */
+
+}
+/* .main-body{
+  display:grid;
+  grid-template-columns: 1fr 3fr;
+} */
+
