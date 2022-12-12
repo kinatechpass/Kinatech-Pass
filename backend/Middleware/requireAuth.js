@@ -14,12 +14,18 @@ const requireAuth = async (req, res, next) => {
      })
    }
     const token = authorization.split(" ")[1]
-    const verifyToken = await jwt.verify(token, process.env.SECRET)
+    // const verifyToken = await jwt.verify(token, process.env.SECRET)
 
-    const user = await verifyToken
-    req.user = user
+    // const user = await verifyToken
 
+    const { userId } = jwt.verify(token, process.env.SECRET)
+
+    req.user = await User.find({ userId }).select('_id')
     next()
+
+    // req.user = user
+
+    // next()
 
   }
   catch(e){

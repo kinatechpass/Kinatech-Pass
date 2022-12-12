@@ -16,9 +16,10 @@ const getBalance = async (req, res) => {
 const addBalance = async (req, res) => {
   
     try{
-      const { balance } = req.body
+      const { Amount } = req.body
+      const userId = req.user._id
 
-      const newBalance = await Profile.create({ Amount: balance })
+      const newBalance = await Profile.create({ Amount, userId})
      res.status(200).json({message:newBalance})
     }
     catch(e){

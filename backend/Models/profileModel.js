@@ -4,12 +4,17 @@ const User = require("../Models/userModel")
 const Schema = mongoose.Schema
 
 const profileShema = new Schema({
-  Earnings:{
-    type:mongoose.Schema.Types.ObjectId,
-    ref:User,
-  },
+  // Earnings:{
+  //   type:mongoose.Schema.Types.ObjectId,
+  //   ref:User,
+  // },
   Amount:{
-    type:Number
+    type:Number,
+    required:true
+  },
+  userId:{
+   type:String,
+   required:true
   }
 
 }, { timestamps: true })
