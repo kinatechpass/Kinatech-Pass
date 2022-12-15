@@ -127,6 +127,8 @@ async function ResetPassword(req, res) {
     const hashNewPassword = await bcrypt.hash(password, 10)
    const newPsw =  await User.findOneAndUpdate({Email:user.Email}, {Password:hashNewPassword})
    res.status(200).send(newPsw)
+
+
 }
 // 081395705
 
