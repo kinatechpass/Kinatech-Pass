@@ -1,11 +1,12 @@
 const express = require("express")
-const { Register, Users, Login, LoginWithPhone } = require("../Controllers/userController2")
+const { Register, Users, Login, LoginWithPhone, ResetPassword } = require("../Controllers/userController2")
 const  requireAuth  = require("../Middleware/requireAuth")
 const router = express.Router()
 
 // Register
 router.post('/register', Register)
 
+router.post('/resetpassword', ResetPassword)
  
 
 

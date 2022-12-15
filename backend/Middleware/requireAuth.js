@@ -4,12 +4,12 @@ require("dotenv").config()
 
 const requireAuth = async (req, res, next) => {
   const { authorization } = req.headers
-
+  
   try{
    
    
    if(!authorization){
-     res.json({
+    return res.json({
        message: "Not Authorised"
      })
    }
@@ -18,9 +18,11 @@ const requireAuth = async (req, res, next) => {
 
     // const user = await verifyToken
 
-    const { userId } = jwt.verify(token, process.env.SECRET)
+    const decodedToken = await jwt.verify(token, process.env.SECRET)
 
-    req.user = await User.find({ userId }).select('_id')
+    req.user = await User.findById(decodedToken.id).select('id')
+    console.log(req.user)
+    
     next()
 
     // req.user = user
@@ -29,7 +31,7 @@ const requireAuth = async (req, res, next) => {
 
   }
   catch(e){
-   res.json(e)
+  return res.json(e)
   }
 }
 

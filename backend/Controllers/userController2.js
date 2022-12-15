@@ -4,10 +4,14 @@ const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
 
+const createToken = (id) => {
+  return jwt.sign({ id }, process.env.SECRET, { expiresIn: '3h' } )
+}
+
 async function Register(req, res) {
   const { email, phone, password } = req.body
     if(!email || !phone || !password) {
-      res.status(400).json({
+     return res.status(400).json({
         message:"No Field Should Be Empty!"
       })
     }
@@ -15,7 +19,7 @@ async function Register(req, res) {
     const phoneExists = await User.findOne({ Phone:phone })
 
     if(emailExists || phoneExists){
-      res.status(400).json({
+     return res.status(400).json({
         message: "Email Or Phone Exists!"
       })
     }
@@ -26,7 +30,7 @@ async function Register(req, res) {
     const user = await User.create({Email:email, Phone:phone, Password:hashpsw})
     if(user){
       const name = user.Email.split("@")[0]
-      res.json({
+      return res.json({
         message:`Welcome! ${name}`,
         details:user
       })
@@ -40,7 +44,7 @@ async function Register(req, res) {
 async function Users(req, res) {
   const user = await User.find({})
   console.log(user)
-  res.status(200).send(user)
+ return res.status(200).send(user)
 }
 
 //Login with email Users
@@ -49,7 +53,7 @@ async function Login(req, res) {
   const user = await User.findOne({ Email: email })
 
   if (!user) {
-    res.status(400).json({
+   return res.status(400).json({
       message: "Email Not found!"
     })
   }
@@ -57,35 +61,29 @@ async function Login(req, res) {
    const pswCheck = await bcrypt.compare(password, user.Password)
 
    if(!pswCheck){
-    res.json({
+   return res.json({
       message:"Incorrect Password"
     })
    }
 
-  //  const token = await createToken(user._id)
   const name = user.Email.split("@")[0]
-  const createToken = {
-    userid: user._id,
-    userEmail: user.Email
-  }
 
-  const token = jwt.sign(createToken, process.env.SECRET, { expiresIn: '3h' })
 
-   res.json({
+   res.status(201).json({
     message:`Welcome ${name}`,
     user:user,
-    token
+    token:createToken(user._id)
    })
    
 }
 
-
+//Login With Phone
 async function LoginWithPhone(req, res) {
   const { phone, password } = req.body
   const user = await User.findOne({ Phone: phone })
 
   if (!user) {
-    res.status(400).json({
+   return res.status(400).json({
       message: "Phone Not found!"
     })
   }
@@ -93,7 +91,7 @@ async function LoginWithPhone(req, res) {
   const pswCheck = await bcrypt.compare(password, user.Password)
 
   if (!pswCheck) {
-    res.json({
+   return res.json({
       message: "Incorrect Password"
     })
   }
@@ -114,11 +112,28 @@ async function LoginWithPhone(req, res) {
   })
 
 }
+
+//Reset Password
+async function ResetPassword(req, res) {
+
+  const { email, password} = req.body
+
+  const user = await User.findOne({Email:email})
+   
+  if(!user){
+   return res.status(400).json({message:"User Not Found!"})
+  }
+
+    const hashNewPassword = await bcrypt.hash(password, 10)
+   const newPsw =  await User.findOneAndUpdate({Email:user.Email}, {Password:hashNewPassword})
+   res.status(200).send(newPsw)
+}
 // 081395705
 
 module.exports = {
   Register,
   Users,
   Login,
-  LoginWithPhone
+  LoginWithPhone,
+  ResetPassword
 }
