@@ -10,6 +10,8 @@ function App() {
      const [loading, setLoading] = useState(true);
      const [Text, setText] = useState("Empty")
      const [provider, setProvider] = useState();
+     const [googleEmail, setgoogleEmail] = useState()
+     
  useEffect(()=>{
   setLoading(false);
  }, [])

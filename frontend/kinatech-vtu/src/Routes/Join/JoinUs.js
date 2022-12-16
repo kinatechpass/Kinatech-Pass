@@ -1,16 +1,68 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import './Register.css'
 import '../../index.css'
 import { HiOutlineMail, HiLockClosed } from "react-icons/hi";
 import { BsTelephoneFill, BsKeyboard } from "react-icons/bs"
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
+// import firebase from 'firebase';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import { getAuth } from 'firebase/auth';
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
 export default function JoinUs() {
       const emailRef = useRef()
       const phoneRef = useRef()
       const pswRef = useRef()
       const referalRef = useRef()
-      
+  const [hasSignedupwithGoogle, sethasSignedupwithGoogle] = useState(false)
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyAAuXn197IRidCsXp1gCnskDsOHPE1M644",
+    authDomain: "kinatech-pay.firebaseapp.com",
+    projectId: "kinatech-pay",
+    storageBucket: "kinatech-pay.appspot.com",
+    messagingSenderId: "200134492717",
+    appId: "1:200134492717:web:2ca21b80e546f52840eea4",
+    measurementId: "G-10LFF79L63"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);   
+
+  const firebaseApp = firebase.initializeApp(firebaseConfig);
+  
+const auth = getAuth();
+const user = auth.currentUser;
+
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    alert(user.displayName)
+    localStorage.setItem("userName", user.displayName)
+    localStorage.setItem("userEmail", user.email)
+    localStorage.setItem("userPhone", user.phoneNumber)
+  } else {
+    // No user is signed in.
+  }
+   const signInWithGoogle = async () => {
+     const GoogleAuth = new firebase.auth.GoogleAuthProvider();
+     await firebase.auth().signInWithPopup(GoogleAuth);
+      sethasSignedupwithGoogle(true)
+    
+    
+
+   }
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      // currentUser should be available now.
+      console.log(user)
+    } else {
+      // No user logged in.
+    }
+  });
   return (
     <div className='cover '>
       <div className="Airtime-body">
@@ -61,7 +113,7 @@ export default function JoinUs() {
                 </div>
 
              <div className="mt-4">
-              <button className='submit border border-fuchsia-700 rounded-lg p-2 w-10/12 hover:bg-fuchsia-700 hover:text-white cursor-pointer' type='submit'>Sign Up</button>
+              <button className='submit border border-fuchsia-700 rounded-lg p-2 w-10/12 hover:bg-fuchsia-700 hover:text-white cursor-pointer' >Sign Up</button>
               <small className='block text-left ml-9 mt-2 cursor-pointer text-fuchsia-700'>Forgot Password</small>
 
                     <small className='block ml-9 mt-2 mb-2 '>Already Have An Account? <span className='cursor-pointer text-fuchsia-700'>
@@ -77,10 +129,15 @@ export default function JoinUs() {
 
           <div className="hidden md:block formImage lg:col-span-2">
             <img className='img h-full' src='./assets/people2.jpeg' style={{ width: '100%', objectFit: 'cover' }} />
+         
           </div>
+          <button onClick={signInWithGoogle} className='submit border border-fuchsia-700 rounded-lg 
+          p-2 mx-auto mb-2 w-3/5 hover:bg-fuchsia-700 hover:text-white cursor-pointer' type='submit'>
+            Sign in google
+            </button>
         </div>
 
-
+        {hasSignedupwithGoogle ? <Navigate to={'/Account'} /> : null}
       </div>
     </div> 
   )
