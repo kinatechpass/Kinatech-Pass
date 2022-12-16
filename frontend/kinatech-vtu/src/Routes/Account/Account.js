@@ -1,19 +1,22 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './Account.css'
 import { BsWallet } from "react-icons/bs";
+import shareContext from '../../Context/ShareContext';
 export default function Account() {
+  const { googleName } = useContext(shareContext)
   return (
     <div className='cover'>
       <div className="Airtime-body">
-
+        <h1 className='mt-4 text-3xl font-bold'>Welcome! {googleName} </h1>
+        <p>Play Around with your dashboard and start Earning</p>
       </div>
-      <div className=" mt-4 ref-program bg-white rounded-lg p-4 text-fuchsia-500 flex gap-4">
+      <div className=" ref-program bg-white rounded-lg p-4 text-fuchsia-500 flex gap-4">
         <h2 className='font-bold text-lg p-2'>Join Our Refferal Program And Earn</h2>
         <div className='btnDiv'>
           <button className='btnn bg-rose-500 text-white px-4 py-1 rounded-lg font-bold'>Join Now!</button>
         </div>
       </div>
-
+     
       <div className="Account gap-4 mt-9 sm:grid grid-cols-2 md:grid-cols-3">
         <div className="main balance mt-7 m-auto sm:ml-0 rounded-2xl">
           <div className="flex">

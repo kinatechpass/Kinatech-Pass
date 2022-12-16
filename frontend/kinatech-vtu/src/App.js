@@ -11,7 +11,9 @@ function App() {
      const [Text, setText] = useState("Empty")
      const [provider, setProvider] = useState();
      const [googleEmail, setgoogleEmail] = useState()
-     
+     const [googleName, setgoogleName] = useState()
+     const [googlePhonenumber, setgooglePhonenumber] = useState()
+     const [googleId, setgoogleId] = useState()
  useEffect(()=>{
   setLoading(false);
  }, [])
@@ -26,7 +28,9 @@ function App() {
   ) : (
     <div className="App">
       <HashRouter>
-        <shareContext.Provider value={{Text, setText, provider, setProvider}}>
+        <shareContext.Provider value={{Text, setText, provider, setProvider, googleEmail, 
+        setgoogleEmail, googleName, setgoogleName, 
+          googlePhonenumber, setgooglePhonenumber, googleId, setgoogleId}}>
           <Main />
           <ToastContainer />
         </shareContext.Provider>

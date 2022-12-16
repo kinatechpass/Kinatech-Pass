@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import './Register.css'
 import '../../index.css'
 import { HiOutlineMail, HiLockClosed } from "react-icons/hi";
@@ -10,6 +10,7 @@ import 'firebase/compat/auth';
 import { getAuth } from 'firebase/auth';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import shareContext from '../../Context/ShareContext';
 
 export default function JoinUs() {
       const emailRef = useRef()
@@ -37,13 +38,15 @@ export default function JoinUs() {
 const auth = getAuth();
 const user = auth.currentUser;
 
+  const { setgoogleEmail, setgoogleName, setgooglePhonenumber, setgoogleId } = useContext(shareContext)
   if (user) {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/firebase.User
-    alert(user.displayName)
-    localStorage.setItem("userName", user.displayName)
-    localStorage.setItem("userEmail", user.email)
-    localStorage.setItem("userPhone", user.phoneNumber)
+    // alert(user.displayName)
+    setgoogleEmail(user.email)
+    setgoogleId(user.uid)
+    setgoogleName(user.displayName)
+    setgooglePhonenumber(user.phoneNumber)
   } else {
     // No user is signed in.
   }
@@ -51,7 +54,7 @@ const user = auth.currentUser;
      const GoogleAuth = new firebase.auth.GoogleAuthProvider();
      await firebase.auth().signInWithPopup(GoogleAuth);
       sethasSignedupwithGoogle(true)
-    
+      
     
 
    }
