@@ -12,6 +12,7 @@ const createToken = (id) => {
   return jwt.sign({ id }, process.env.SECRET, { expiresIn: '3h' } )
 }
 
+// Register
 async function Register(req, res) {
   const { email, phone, password } = req.body
     if(!email || !phone || !password) {
@@ -78,7 +79,8 @@ async function Register(req, res) {
 
       return res.json({
         message:`Welcome! ${name}`,
-        details:user
+        details:user,
+        info:'Kindly Check Your Inbox And verify Your Email!'
       })
     }
 
