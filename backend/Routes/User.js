@@ -1,5 +1,5 @@
 const express = require("express")
-const { Register, Users, Login, LoginWithPhone, ResetPassword } = require("../Controllers/userController2")
+const { Register, Users, Login, LoginWithPhone, ResetPassword, verifyEmail } = require("../Controllers/userController2")
 const  requireAuth  = require("../Middleware/requireAuth")
 const router = express.Router()
 
@@ -18,5 +18,5 @@ router.post('/login-phone', LoginWithPhone)
 
 router.use(requireAuth)
 router.get('/users',Users)
-
+router.get('/emailverify', verifyEmail)
 module.exports = router

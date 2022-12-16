@@ -10,7 +10,7 @@ const requireAuth = async (req, res, next) => {
    
    if(!authorization){
     return res.json({
-       message: "Not Authorised"
+       error: "Not Authorised"
      })
    }
     const token = authorization.split(" ")[1]
@@ -20,7 +20,7 @@ const requireAuth = async (req, res, next) => {
 
     const decodedToken = await jwt.verify(token, process.env.SECRET)
 
-    req.user = await User.findById(decodedToken.id).select('id')
+    req.user = await User.findById(decodedToken.id).select(-'password')
     console.log(req.user)
     
     next()

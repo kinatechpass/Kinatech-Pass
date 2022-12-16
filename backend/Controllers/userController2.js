@@ -12,7 +12,7 @@ async function Register(req, res) {
   const { email, phone, password } = req.body
     if(!email || !phone || !password) {
      return res.status(400).json({
-        message:"No Field Should Be Empty!"
+        error:"No Field Should Be Empty!"
       })
     }
     const emailExists = await User.findOne({Email:email})
@@ -20,14 +20,14 @@ async function Register(req, res) {
 
     if(emailExists || phoneExists){
      return res.status(400).json({
-        message: "Email Or Phone Exists!"
+        error: "Email Or Phone Exists!"
       })
     }
   
     const salt = bcrypt.genSalt()
     const hashpsw = await bcrypt.hash(password,10)
 
-    const user = await User.create({Email:email, Phone:phone, Password:hashpsw})
+    const user = await User.create({Email:email, Phone:phone, Password:hashpsw, verifiedEmail:false})
     if(user){
       const name = user.Email.split("@")[0]
       return res.json({
@@ -37,7 +37,7 @@ async function Register(req, res) {
     }
 
   res.json({
-    message: "Some Error Occured"
+    error: "Some Error Occured"
   })
   }
 
@@ -54,7 +54,7 @@ async function Login(req, res) {
 
   if (!user) {
    return res.status(400).json({
-      message: "Email Not found!"
+      error: "Email Not found!"
     })
   }
 
@@ -62,7 +62,7 @@ async function Login(req, res) {
 
    if(!pswCheck){
    return res.json({
-      message:"Incorrect Password"
+      error:"Incorrect Password"
     })
    }
 
@@ -84,7 +84,7 @@ async function LoginWithPhone(req, res) {
 
   if (!user) {
    return res.status(400).json({
-      message: "Phone Not found!"
+      error: "Phone Not found!"
     })
   }
 
@@ -92,7 +92,7 @@ async function LoginWithPhone(req, res) {
 
   if (!pswCheck) {
    return res.json({
-      message: "Incorrect Password"
+      error: "Incorrect Password"
     })
   }
 
@@ -121,14 +121,27 @@ async function ResetPassword(req, res) {
   const user = await User.findOne({Email:email})
    
   if(!user){
-   return res.status(400).json({message:"User Not Found!"})
+   return res.status(400).json({error:"User Not Found!"})
   }
 
     const hashNewPassword = await bcrypt.hash(password, 10)
-   const newPsw =  await User.findOneAndUpdate({Email:user.Email}, {Password:hashNewPassword})
+   const newPsw =  await User.findOneAndUpdate({Email:user.Email}, 
+    {Password:hashNewPassword})
    res.status(200).send(newPsw)
 
 
+}
+
+  //Email Verification
+async function verifyEmail (req, res) {
+  
+  const emailIsVerified = await User.findOneAndUpdate({Email:req.user.Email},
+     {verifiedEmail:true})
+  return res.status(201).json({
+    name:req.user.Email.split("@")[0],
+    message:"Your Email Has Been Verified! You Can Close This tab now",
+    user:emailIsVerified
+  })
 }
 // 081395705
 
@@ -137,5 +150,6 @@ module.exports = {
   Users,
   Login,
   LoginWithPhone,
-  ResetPassword
+  ResetPassword,
+  verifyEmail
 }

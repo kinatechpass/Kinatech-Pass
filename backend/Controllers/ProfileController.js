@@ -10,7 +10,7 @@ const getBalance = async (req, res) => {
       message: balance
     })
   }catch(e){
-   return res.status(400).json({message:'An Error Occured!',e})
+   return res.status(400).json({error:'An Error Occured!',e})
   }
 }
 
@@ -24,7 +24,7 @@ const Transactions = async (req, res) => {
       data: balance
     })
   } catch (e) {
-    return res.status(400).json({ message: 'An Error Occured!', e })
+    return res.status(400).json({ error: 'An Error Occured!', e })
   }
 }
 
@@ -46,7 +46,7 @@ const addBalance = async (req, res) => {
     })
     }
     catch(e){
-     return res.status(400).json({message:'An Error Occured!', e})
+     return res.status(400).json({error:'An Error Occured!', e})
     }
 }
 

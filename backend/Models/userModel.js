@@ -9,6 +9,9 @@ const userShema = new Schema({
     required: [true, "Email Is Required!"],
     unique: [true, "Email Exists"],
   },
+  verifiedEmail:{
+    type:Boolean,
+  },
    Phone: {
     type: String,
     required: [true, "phone is required"],
