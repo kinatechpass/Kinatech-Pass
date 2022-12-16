@@ -1,11 +1,9 @@
 const express = require("express")
-
+const { buyAirtime } = require("../Controllers/AirtimeController")
 const router = express.Router()
 
  // airtel
-router.post('/', (req, res)=>{
-   res.send('airtime')
-})
+router.post('/', buyAirtime)
 
 // // MTN
 // router.post('/mtn', (req, res) => {

@@ -2,6 +2,10 @@
 const User = require("../Models/userModel")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
+const nodemailer = require('nodemailer');
+const hte = require('nodemailer-express-handlebars')
+const path = require('path')
+
 require("dotenv").config()
 
 const createToken = (id) => {
@@ -24,12 +28,54 @@ async function Register(req, res) {
       })
     }
   
-    const salt = bcrypt.genSalt()
+    // Depreciated const salt = bcrypt.genSalt()
     const hashpsw = await bcrypt.hash(password,10)
 
     const user = await User.create({Email:email, Phone:phone, Password:hashpsw, verifiedEmail:false})
     if(user){
       const name = user.Email.split("@")[0]
+      // Email verification setups
+      let mailTransporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: process.env.EMAIL,
+          pass: process.env.PASSWORD
+        }
+      });
+      // point to the template folder
+      const handlebarOptions = {
+        viewEngine: {
+          partialsDir: path.resolve('./views/'),
+          defaultLayout: false,
+        },
+        viewPath: path.resolve('./views/'),
+      };
+
+      // use a template file with nodemailer
+      mailTransporter.use('compile', hte(handlebarOptions))
+
+
+      let mailDetails = {
+        from: process.env.EMAIL,
+        to: user.Email,
+        subject: 'Email Verification',
+        template: 'email',
+        context: {
+          name: user.Email.split("@")[0],
+        },
+        text: `Hi ${name} Welcome to Kinatech pay, 
+        To start enjoying our services Verify Your Email! Click On the link below to start`
+      };
+
+      mailTransporter.sendMail(mailDetails, function (err, data) {
+        if (err) {
+          console.log('An Error Occurred');
+        } else {
+          console.log('Email sent successfully');
+        }
+      });
+//End of setups
+
       return res.json({
         message:`Welcome! ${name}`,
         details:user
@@ -132,9 +178,12 @@ async function ResetPassword(req, res) {
 
 }
 
+
+
   //Email Verification
 async function verifyEmail (req, res) {
-  
+ 
+
   const emailIsVerified = await User.findOneAndUpdate({Email:req.user.Email},
      {verifiedEmail:true})
   return res.status(201).json({
