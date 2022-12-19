@@ -5,7 +5,7 @@ import { HashRouter } from 'react-router-dom'
 import { shareContext } from './Context/ShareContext'
 import { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
-
+import { GoogleAuthContextProvider } from './Context/GoogleAuthContext';
 function App() {
      const [loading, setLoading] = useState(true);
      const [Text, setText] = useState("Empty")
@@ -28,12 +28,14 @@ function App() {
   ) : (
     <div className="App">
       <HashRouter>
+      <GoogleAuthContextProvider>
         <shareContext.Provider value={{Text, setText, provider, setProvider, googleEmail, 
         setgoogleEmail, googleName, setgoogleName, 
           googlePhonenumber, setgooglePhonenumber, googleId, setgoogleId}}>
           <Main />
           <ToastContainer />
         </shareContext.Provider>
+     </GoogleAuthContextProvider>
     </HashRouter>
 
     </div>

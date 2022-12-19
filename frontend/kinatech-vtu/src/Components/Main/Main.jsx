@@ -5,7 +5,7 @@ import NavBar from '../Tailwind Navbar/NavBar';
 import SideBar from '../Tailwind Sidebar/SideBar';
 import Body from '../Body/Body';
 import Footer from '../Footer/Footer';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Airtime from '../../Routes/Aitime/Airtime';
 import Data from '../../Routes/Data/Data';
 import Elec from '../../Routes/Electricity/Elec';
@@ -23,8 +23,10 @@ import GloForm from '../../Routes/Data/GloForm';
 import AirtelForm from '../../Routes/Data/AirtelForm';
 import MobileForm from '../../Routes/Data/MobileForm';
 import GOTVForm from '../../Routes/Tv/GOTVForm';
+import { useGoogleAuthContext } from '../../hooks/useGoogleAuthContext';
 // import Tbody from '../Tailwind Body/Tbody';
 function Main() {
+  const { googleUser }  = useGoogleAuthContext()
   return (
     <>
       <div className='main_container'>
@@ -44,10 +46,10 @@ function Main() {
              <Route path='/Tv/DSTVform' element={<DSTVForm />} />
           <Route path='/Tv/GOTVform' element={<GOTVForm />} />
             <Route path='/Gifts' element={<Gifts />} />
-            <Route path='/joinUs' element={<JoinUs />} />
-            <Route path='/Login' element={<Login />} />
+            {<Route path='/joinUs' element={ !googleUser ? <JoinUs /> : <Navigate to={'/Account'}/>} />} 
+          <Route path='/Login' element={!googleUser ? <Login /> : <Navigate to={'/Account'} />} />} />
             <Route path='/More' element={<More />} />
-            <Route path='/Account' element={<Account />} />
+          <Route path='/Account' element={googleUser ? <Account /> : <Navigate to={'/Login'} />} />} />
            <Route path='/ElctricityForm' element={<ElecForm />} />
             <Route path='/Airtime/Form' element={<Form />} />
             <Route path='/Data/Form' element={<MtnForm />} />

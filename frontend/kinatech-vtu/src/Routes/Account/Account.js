@@ -17,11 +17,11 @@ export default function Account() {
   // if (!user) {
   //  setisSignedIn(true)
   // } 
-
+  const user = JSON.parse(localStorage.getItem('user'))
   return isSignedIn ?  (
     <div className='cover'>
       <div className="Airtime-body">
-        <h1 className='mt-4 text-3xl font-bold'>Welcome! {localStorage.getItem('user')} </h1>
+        <h1 className='mt-4 text-3xl font-bold'>Welcome! {user.displayName} </h1>
         <p>Play Around with your dashboard and start Earning</p>
       </div>
       <div className=" ref-program bg-white rounded-lg p-4 text-fuchsia-500 flex gap-4">

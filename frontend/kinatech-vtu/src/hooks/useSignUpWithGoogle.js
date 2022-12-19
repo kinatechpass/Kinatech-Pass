@@ -42,14 +42,12 @@ export const useSignUpWithGoogle = () => {
       setloading(false)
       
     }
-     firebase.auth().onAuthStateChanged(function (user) {
+     firebase.auth().onAuthStateChanged(async function (user) {
       if (user) {
-        // currentUser should be available now.
         localStorage.setItem('user', JSON.stringify(user))
-
-        dispatch({ type: 'LOGGEDINWITHGOOGLE', payload: user })
-      
-        console.log('user is', user)
+       return dispatch({ type: 'LOGGEDINWITHGOOGLE', payload: user })
+      console.log('user is', user)
+    
       } else {
         // No user logged in.
       }
