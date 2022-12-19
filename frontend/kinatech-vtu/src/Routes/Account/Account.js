@@ -1,13 +1,27 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import './Account.css'
 import { BsWallet } from "react-icons/bs";
 import shareContext from '../../Context/ShareContext';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import { getAuth } from 'firebase/auth';
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+
 export default function Account() {
   const { googleName } = useContext(shareContext)
-  return (
+  const [isSignedIn, setisSignedIn] = useState(true)
+  // const auth = getAuth();
+  // const user = auth.currentUser;
+
+  // if (!user) {
+  //  setisSignedIn(true)
+  // } 
+
+  return isSignedIn ?  (
     <div className='cover'>
       <div className="Airtime-body">
-        <h1 className='mt-4 text-3xl font-bold'>Welcome! {googleName} </h1>
+        <h1 className='mt-4 text-3xl font-bold'>Welcome! {localStorage.getItem('user')} </h1>
         <p>Play Around with your dashboard and start Earning</p>
       </div>
       <div className=" ref-program bg-white rounded-lg p-4 text-fuchsia-500 flex gap-4">
@@ -162,12 +176,21 @@ export default function Account() {
               </button>
             </div>
 
-
           </div>
 
 
         </div>
       </div>
     </div>
-  )
+  ) : (
+      <div className=''>
+        {
+          toast.error("Session Expired!, return to sign in", {
+            position: toast.POSITION.TOP_CENTER
+          })
+
+       
+        }
+    </div>
+  );
 }

@@ -1,71 +1,43 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './Register.css'
 import '../../index.css'
 import { HiOutlineMail, HiLockClosed } from "react-icons/hi";
 import { BsTelephoneFill, BsKeyboard } from "react-icons/bs"
 import { Link, Navigate } from 'react-router-dom';
-// import firebase from 'firebase';
+
+import shareContext from '../../Context/ShareContext';
+import { useSignUpWithGoogle } from '../../hooks/useSignUpWithGoogle';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import { getAuth } from 'firebase/auth';
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import shareContext from '../../Context/ShareContext';
 
 export default function JoinUs() {
-      const emailRef = useRef()
-      const phoneRef = useRef()
-      const pswRef = useRef()
-      const referalRef = useRef()
+  
   const [hasSignedupwithGoogle, sethasSignedupwithGoogle] = useState(false)
-  
-  const firebaseConfig = {
-    apiKey: "AIzaSyAAuXn197IRidCsXp1gCnskDsOHPE1M644",
-    authDomain: "kinatech-pay.firebaseapp.com",
-    projectId: "kinatech-pay",
-    storageBucket: "kinatech-pay.appspot.com",
-    messagingSenderId: "200134492717",
-    appId: "1:200134492717:web:2ca21b80e546f52840eea4",
-    measurementId: "G-10LFF79L63"
-  };
+  const [email, setemail] = useState("")
+  const [phone, setphone] = useState("")
+  const [psw, setpsw] = useState("")
+ const { signupwithgoogle, loading, error} = useSignUpWithGoogle()
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);   
-
-  const firebaseApp = firebase.initializeApp(firebaseConfig);
-  
-const auth = getAuth();
-const user = auth.currentUser;
-
-  const { setgoogleEmail, setgoogleName, setgooglePhonenumber, setgoogleId } = useContext(shareContext)
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    // alert(user.displayName)
-    setgoogleEmail(user.email)
-    setgoogleId(user.uid)
-    setgoogleName(user.displayName)
-    setgooglePhonenumber(user.phoneNumber)
-  } else {
-    // No user is signed in.
+  const handleEmailChange = (e) => {
+    setemail(e.target.value)
   }
-   const signInWithGoogle = async () => {
-     const GoogleAuth = new firebase.auth.GoogleAuthProvider();
-     await firebase.auth().signInWithPopup(GoogleAuth);
-      sethasSignedupwithGoogle(true)
-      
-    
+  const handlephoneChange = (e) => {
+    setphone(e.target.value)
+  }
+  const handlepswChange = (e) => {
+    setpsw(e.target.value)
+  }
 
-   }
-  firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-      // currentUser should be available now.
-      console.log(user)
-    } else {
-      // No user logged in.
-    }
-  });
+  const GoogleAuth = new firebase.auth.GoogleAuthProvider();
+// const user = auth.currentUser;
+const signInWithGoogle = async () => {
+   signupwithgoogle(GoogleAuth)
+ 
+  // sethasSignedupwithGoogle(true)
+}
+ 
+
   return (
     <div className='cover '>
       <div className="Airtime-body">
@@ -90,20 +62,20 @@ const user = auth.currentUser;
                 
                 <div className="flex mx-9 rounded-lg">
                     <HiOutlineMail className='icon p-1 h-12 text-fuchsia-700' /> 
-                 <input type="Email" ref={emailRef} className="email text-sm text-center h-12 block" name='Email' placeholder='Your Email...' />
+                 <input type="Email" value={email} onChange={handleEmailChange} className="email text-sm text-center h-12 block" name='Email' placeholder='Your Email...' />
                 </div>
                   <span className="hint text-rose-500 text-sm">{"Pls Enter Email"}</span>
                  
                   <div className="flex mt-4 mx-9 rounded-lg">
                     <BsTelephoneFill className='icons p-1 h-12 text-fuchsia-700' /> 
-                    <input type="number" ref={phoneRef} className="number text-sm text-center h-12 block" name='number' placeholder='Your Phone Number...' />
+                    <input type="number" value={phone} onChange={handlephoneChange} className="number text-sm text-center h-12 block" name='number' placeholder='Your Phone Number...' />
                   </div>
                   <span className="hint text-rose-500 text-sm">{"Pls Input Phone Number"}</span>
                 
                    
                   <div className="flex mt-4 mx-9 rounded-lg ">
                     <HiLockClosed className='icon p-1 h-12 text-fuchsia-700' /> 
-                    <input type="Password" ref={pswRef} className="password text-sm text-center h-12 block" name='psw' placeholder='Password' />
+                    <input type="Password" value={psw} onChange={handlepswChange} className="password text-sm text-center h-12 block" name='psw' placeholder='Password' />
                   </div>
                   <span className="hint text-rose-500 text-sm">{"Pls Enter a Strong Password"}</span>
 
@@ -111,7 +83,7 @@ const user = auth.currentUser;
                     <small className='block block text-left ml-9 mt-2 cursor-pointer text-fuchsia-700'>Optional</small>
                   <div className="flex mx-9 rounded-lg">
                       <BsKeyboard className='icons p-1 h-12 text-fuchsia-700' />
-                    <input type="Text" ref={referalRef} className="ref text-sm text-center h-12 block" name='ref' placeholder='Referal Code...' />
+                    <input type="Text" className="ref text-sm text-center h-12 block" name='ref' placeholder='Referal Code...' />
                   </div>
                 </div>
 
@@ -136,11 +108,11 @@ const user = auth.currentUser;
           </div>
           <button onClick={signInWithGoogle} className='submit border border-fuchsia-700 rounded-lg 
           p-2 mx-auto mb-2 w-3/5 hover:bg-fuchsia-700 hover:text-white cursor-pointer' type='submit'>
-            Sign in google
+            Sign Up With google
             </button>
         </div>
 
-        {hasSignedupwithGoogle ? <Navigate to={'/Account'} /> : null}
+        {hasSignedupwithGoogle && <Navigate to={'/Account'} />  }
       </div>
     </div> 
   )
