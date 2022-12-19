@@ -30,27 +30,42 @@ export const useSignUpWithGoogle = () => {
        const [loading, setloading] = useState(null)
        const [error, seterror] = useState(null)
        const [hasSignedupwithGoogle, sethasSignedupwithGoogle] = useState(false)
-       const { dispatch } = useGoogleAuthContext
-
+       const { dispatch } = useGoogleAuthContext()
+      const user = JSON.parse(localStorage.getItem('user'))
        
       //  const user = auth.currentUser
       // const [loading, setloading] = useState(null)
 
   const signupwithgoogle = async (GoogleAuth) => {
       setloading(true)
-      await firebase.auth().signInWithRedirect(GoogleAuth);
+      await firebase.auth().signInWithPopup(GoogleAuth);
       setloading(false)
-      
+     
     }
      firebase.auth().onAuthStateChanged(async function (user) {
       if (user) {
-        localStorage.setItem('user', JSON.stringify(user))
-       return dispatch({ type: 'LOGGEDINWITHGOOGLE', payload: user })
-      console.log('user is', user)
-    
-      } else {
-        // No user logged in.
+        dispatch({ type: 'LOGGEDINWITHGOOGLE', payload: JSON.parse(localStorage.getItem('user')) })
+       
+        const email = user.email
+        const password = user.uid
+        const phone = '0908765434'
+        const response = await fetch('/api/v1/account/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/josn' },
+          body: JSON.stringify({ email, password, phone })
+
+        })
+
+        const json = await response.json()
+
+        if (response.ok) {
+          return json
+        }
+
+        return localStorage.setItem('user', JSON.stringify(user))
       }
     });
+
+   
     return { loading, signupwithgoogle}
 }

@@ -27,6 +27,7 @@ import { useGoogleAuthContext } from '../../hooks/useGoogleAuthContext';
 // import Tbody from '../Tailwind Body/Tbody';
 function Main() {
   const { googleUser }  = useGoogleAuthContext()
+  const user = JSON.parse(localStorage.getItem('user'))
   return (
     <>
       <div className='main_container'>
@@ -46,10 +47,10 @@ function Main() {
              <Route path='/Tv/DSTVform' element={<DSTVForm />} />
           <Route path='/Tv/GOTVform' element={<GOTVForm />} />
             <Route path='/Gifts' element={<Gifts />} />
-            {<Route path='/joinUs' element={ !googleUser ? <JoinUs /> : <Navigate to={'/Account'}/>} />} 
-          <Route path='/Login' element={!googleUser ? <Login /> : <Navigate to={'/Account'} />} />} />
+            {<Route path='/joinUs' element={ !googleUser || !user ? <JoinUs /> : <Navigate to={'/Account'}/>} />} 
+          <Route path='/Login' element={!googleUser || !user ? <Login /> : <Navigate to={'/Account'} />} />} />
             <Route path='/More' element={<More />} />
-          <Route path='/Account' element={googleUser ? <Account /> : <Navigate to={'/Login'} />} />} />
+          <Route path='/Account' element={googleUser || user ? <Account /> : <Navigate to={'/Login'} />} />} />
            <Route path='/ElctricityForm' element={<ElecForm />} />
             <Route path='/Airtime/Form' element={<Form />} />
             <Route path='/Data/Form' element={<MtnForm />} />

@@ -7,21 +7,31 @@ import 'firebase/compat/auth';
 import { getAuth } from 'firebase/auth';
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from 'react-router-dom';
 
 export default function Account() {
   const { googleName } = useContext(shareContext)
   const [isSignedIn, setisSignedIn] = useState(true)
+  const navigate = useNavigate()
   // const auth = getAuth();
   // const user = auth.currentUser;
 
   // if (!user) {
-  //  setisSignedIn(true)
-  // } 
+  //  setisSignedIn(true){}
+  //   } 
   const user = JSON.parse(localStorage.getItem('user'))
+ if(!user){
+  
+   toast.error("Not Logged in", {
+     position: toast.POSITION.BOTTOM_CENTER
+   });
+   navigate('/Login')
+ }
+
   return isSignedIn ?  (
     <div className='cover'>
       <div className="Airtime-body">
-        <h1 className='mt-4 text-3xl font-bold'>Welcome! {user.displayName} </h1>
+        <h1 className='mt-4 text-3xl font-bold'>Welcome! {user && user.displayName} </h1> 
         <p>Play Around with your dashboard and start Earning</p>
       </div>
       <div className=" ref-program bg-white rounded-lg p-4 text-fuchsia-500 flex gap-4">

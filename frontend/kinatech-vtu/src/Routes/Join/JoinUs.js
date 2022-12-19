@@ -37,6 +37,22 @@ const signInWithGoogle = async () => {
   // sethasSignedupwithGoogle(true)
 }
  
+ const createAccount = async (e) => {
+  e.preventDefault()
+   const response = await fetch('http://localhost:4000/api/v1/account/register', {
+     method: 'POST',
+     headers: { 'Content-Type': 'application/josn' },
+     body: JSON.stringify({ email, psw, phone })
+
+   })
+
+   
+
+   if (response.ok) {
+     const json = await response.json()
+     return console.log(json)
+   }
+ }
 
   return (
     <div className='cover '>
@@ -88,7 +104,8 @@ const signInWithGoogle = async () => {
                 </div>
 
              <div className="mt-4">
-              <button className='submit border border-fuchsia-700 rounded-lg p-2 w-10/12 hover:bg-fuchsia-700 hover:text-white cursor-pointer' >Sign Up</button>
+              <button onClick={createAccount} className='submit border border-fuchsia-700 rounded-lg p-2 w-10/12 hover:bg-fuchsia-700 hover:text-white cursor-pointer' >
+                Sign Up</button>
               <small className='block text-left ml-9 mt-2 cursor-pointer text-fuchsia-700'>Forgot Password</small>
 
                     <small className='block ml-9 mt-2 mb-2 '>Already Have An Account? <span className='cursor-pointer text-fuchsia-700'>

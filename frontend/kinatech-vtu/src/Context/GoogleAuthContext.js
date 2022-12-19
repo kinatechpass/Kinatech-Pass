@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useEffect, useReducer, useState } from "react";
 
 export const GoogleAuthContext = createContext()
 
@@ -23,14 +23,17 @@ export const GoogleAuthContextProvider = ({ children }) => {
 
    useEffect(()=>{
      const user = JSON.parse(localStorage.getItem('user'))
-
+     if (!user) {
+       return dispatch({ type: 'LOGGEDOUTWITHGOOGLE' })
+     }
     if(user){
-      dispatch({ type:'LOGGEDINWITHGOOGLE', payload:user})
+     return dispatch({ type:'LOGGEDINWITHGOOGLE', payload:user})
     }
+     
    }, [])
   console.log('AuthContext state:', state)
   return (
-   <GoogleAuthContext.Provider value={{...state, dispatch}}>
+   <GoogleAuthContext.Provider value={{ ...state, dispatch }}>
       { children }
    </GoogleAuthContext.Provider>
   );

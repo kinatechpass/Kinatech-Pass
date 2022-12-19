@@ -3,7 +3,7 @@ const express = require("express")
 const { Users } = require("./Controllers/userController2")
 const { auth } = require("./Middleware/auth")
 const { requireAuth } = require("./Middleware/requireAuth")
-
+const cors = require('cors')
 require("dotenv").config()
 const dbConnect = require("./database/dbConnect")
 //routes
@@ -15,9 +15,16 @@ const profile = require("./Routes/Profile")
  const app = express()
 //setting port
 //  const PORT = 5000
- 
+// let allowCrossDomain = function (req, res, next) {
+//   res.header('Access-Control-Allow-Origin', "*");
+//   res.header('Access-Control-Allow-Headers', "*");
+//   next();
+// }
+// app.use(allowCrossDomain);
 app.use(express.json())
-
+app.use(cors({
+  origin: '*'
+}));
  dbConnect()
  //listener
  app.listen(process.env.PORT, ()=>{
