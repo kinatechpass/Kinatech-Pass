@@ -23,7 +23,7 @@ const profile = require("./Routes/Profile")
 // app.use(allowCrossDomain);
 app.use(express.json())
 app.use(cors({
-  origin: '*'
+  origin: 'http://localhost:3000'
 }));
  dbConnect()
  //listener

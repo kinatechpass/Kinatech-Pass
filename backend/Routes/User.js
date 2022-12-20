@@ -2,7 +2,11 @@ const express = require("express")
 const { Register, Users, Login, LoginWithPhone, ResetPassword, verifyEmail } = require("../Controllers/userController2")
 const  requireAuth  = require("../Middleware/requireAuth")
 const router = express.Router()
+const cors = require('cors')
 
+router.use(cors({
+  origin: 'http://localhost:3000'
+}));
 // Register
 router.post('/register', Register)
 
