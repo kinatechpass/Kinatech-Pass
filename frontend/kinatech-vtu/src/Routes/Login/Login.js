@@ -11,10 +11,16 @@ export default function Login() {
   const [loginToggle, setloginToggle] = useState(true) 
   const phonetext = "Phone Number"
   const emailText = "Email"
+  const [email, setemail] = useState("")
+  const [password, setpassword] = useState("")
 
   const toggle = () => {
      setloginToggle(!loginToggle)
 
+  }
+
+  const SignIn = (e) => {
+    e.preventDefault()
   }
   return (
     <div className='cover '>
@@ -43,20 +49,21 @@ export default function Login() {
                     </div>
 
             
-                  {loginToggle ? <EmailForm /> : <PhoneForm /> }  
+                  {loginToggle ? <EmailForm email={{email, setemail}} /> : <PhoneForm /> }  
 
                   
 
 
                   <div className="flex mt-4 mx-9 rounded-lg ">
                     <HiLockClosed className='icon p-1 h-12 text-fuchsia-700' />
-                    <input type="Password" className="password text-sm text-center h-12 block" name='psw' placeholder='Password' />
+                    <input type="Password" value={password} onChange={(e)=> e.preventDefault()} className="password text-sm text-center h-12 block" name='psw' placeholder='Password' />
                   </div>
                   <span className="hint text-rose-500 text-sm">{"Pls Enter a Strong Password"}</span>
 
 
                   <div className="mt-4">
-                    <button className='submit border border-fuchsia-700 rounded-lg p-2 w-10/12 hover:bg-fuchsia-700 hover:text-white cursor-pointer' type='submit'>Sign In</button>
+                    <button onClick={SignIn} className='submit border border-fuchsia-700 rounded-lg p-2 w-10/12 hover:bg-fuchsia-700 hover:text-white cursor-pointer' type='submit'>
+                      Sign In</button>
                     <small className='block text-left ml-9 mt-2 cursor-pointer text-fuchsia-700'>Forgot Password</small>
 
                     <small className='block ml-9 mt-2 '>Dont Have An Account? <span className='cursor-pointer text-fuchsia-700'>

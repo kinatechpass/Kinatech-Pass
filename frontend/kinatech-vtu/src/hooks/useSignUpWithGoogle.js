@@ -38,29 +38,29 @@ export const useSignUpWithGoogle = () => {
 
   const signupwithgoogle = async (GoogleAuth) => {
       setloading(true)
-      await firebase.auth().signInWithPopup(GoogleAuth);
+      await firebase.auth().signInWithRedirect(GoogleAuth);
       setloading(false)
      
     }
      firebase.auth().onAuthStateChanged(async function (user) {
       if (user) {
         dispatch({ type: 'LOGGEDINWITHGOOGLE', payload: JSON.parse(localStorage.getItem('user')) })
-       
-        const email = user.email
-        const password = user.uid
-        const phone = '0908765434'
-        const response = await fetch('/api/v1/account/register', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/josn' },
-          body: JSON.stringify({ email, password, phone })
+      
+        // const email = user.email
+        // const password = user.uid
+        // const phone = '0908765434'
+        // const response = await fetch('/api/v1/account/register', {
+        //   method: 'POST',
+        //   headers: { 'Content-Type': 'application/josn' },
+        //   body: JSON.stringify({ email, password, phone })
 
-        })
+        // })
 
-        const json = await response.json()
+        // const json = await response.json()
 
-        if (response.ok) {
-          return json
-        }
+        // if (response.ok) {
+        //   return json
+        // }
 
         return localStorage.setItem('user', JSON.stringify(user))
       }

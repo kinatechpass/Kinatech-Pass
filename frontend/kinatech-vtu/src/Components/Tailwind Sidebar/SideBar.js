@@ -35,7 +35,7 @@ function SideBar() {
     
     firebase.auth().onAuthStateChanged(async function (user) {
       if (user) {
-       user.delete()
+        firebase.auth().signOut()
       } 
     });
   }
