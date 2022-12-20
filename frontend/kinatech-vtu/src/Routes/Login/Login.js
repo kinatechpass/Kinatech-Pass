@@ -23,9 +23,20 @@ export default function Login() {
 
   }
 
-  const SignIn = (e) => {
+  const SignIn = async (e) => {
     e.preventDefault()
-  
+    const response = await fetch('/api/v1/account/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+
+    })
+
+    const json = await response.json()
+
+    if (response.ok) {
+      return console.log(json)
+    }
   }
   return (
     <div className='cover '>

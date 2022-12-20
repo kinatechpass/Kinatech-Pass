@@ -17,6 +17,8 @@ export default function JoinUs() {
   const [email, setemail] = useState("")
   const [phone, setphone] = useState("")
   const [psw, setpsw] = useState("")
+  const [response, setresponse] = useState(second)
+  const [errorr, seterrorr] = useState(second)
  const { signupwithgoogle, loading, error} = useSignUpWithGoogle()
 
   const handleEmailChange = (e) => {
@@ -32,24 +34,46 @@ export default function JoinUs() {
   const GoogleAuth = new firebase.auth.GoogleAuthProvider();
 // const user = auth.currentUser;
 const signInWithGoogle = async () => {
-   signupwithgoogle(GoogleAuth)
- 
+  await signupwithgoogle(GoogleAuth)
+  const user = JSON.parse(localStorage.getItem('user'))
+  const email = user.email
+  const password = user.uid
+  const phone = '0908765434'
+  const response = await fetch('/api/v1/account/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/josn' },
+    body: JSON.stringify({ email, phone, password })
+
+  })
+
+  const json = await response.json()
+
+  if (response.ok) {
+    setresponse(json)
+    return console.log(json)
+  }
   // sethasSignedupwithGoogle(true)
 }
- 
+
  const createAccount = async (e) => {
   e.preventDefault()
-   const response = await fetch('http://localhost:4000/api/v1/account/register', {
+
+   const response = await fetch('/api/v1/account/register', {
      method: 'POST',
      headers: { 'Content-Type': 'application/josn' },
-     body: JSON.stringify({ email, psw, phone })
+     body: JSON.stringify({ email, phone, password })
 
    })
 
-   
+   const json = await response.json()
 
    if (response.ok) {
-     const json = await response.json()
+     return console.log(json)
+   }
+   
+
+   if (!response.ok) {
+     seterrorr(json)
      return console.log(json)
    }
  }
