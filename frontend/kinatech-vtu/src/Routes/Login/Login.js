@@ -11,9 +11,13 @@ export default function Login() {
   const [loginToggle, setloginToggle] = useState(true) 
   const phonetext = "Phone Number"
   const emailText = "Email"
+
   const [email, setemail] = useState("")
   const [password, setpassword] = useState("")
 
+   const handleEmailChange = (e) => {
+    setemail(e.target.value)
+   }
   const toggle = () => {
      setloginToggle(!loginToggle)
 
@@ -49,14 +53,14 @@ export default function Login() {
                     </div>
 
             
-                  {loginToggle ? <EmailForm email={{email, setemail}} /> : <PhoneForm /> }  
+                  {loginToggle ? <EmailForm email={email} change={handleEmailChange} /> : <PhoneForm /> }  
 
                   
 
 
                   <div className="flex mt-4 mx-9 rounded-lg ">
                     <HiLockClosed className='icon p-1 h-12 text-fuchsia-700' />
-                    <input type="Password" value={password} onChange={(e)=> e.preventDefault()} className="password text-sm text-center h-12 block" name='psw' placeholder='Password' />
+                    <input type="Password" value={password} onChange={(e)=> setpassword(e.target.value)} className="password text-sm text-center h-12 block" name='psw' placeholder='Password' />
                   </div>
                   <span className="hint text-rose-500 text-sm">{"Pls Enter a Strong Password"}</span>
 
