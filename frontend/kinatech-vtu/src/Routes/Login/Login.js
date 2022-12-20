@@ -25,6 +25,7 @@ export default function Login() {
 
   const SignIn = (e) => {
     e.preventDefault()
+  
   }
   return (
     <div className='cover '>
@@ -53,7 +54,7 @@ export default function Login() {
                     </div>
 
             
-                  {loginToggle ? <EmailForm email={email} change={handleEmailChange} /> : <PhoneForm /> }  
+                  {loginToggle ? <EmailForm handleEmailChange={handleEmailChange} /> : <PhoneForm /> }  
 
                   
 
