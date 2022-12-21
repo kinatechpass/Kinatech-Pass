@@ -19,6 +19,16 @@ export const AuthContextProvider = ({ children }) => {
     authUser:null
  })
 
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('authUser'))
+    if (!user) {
+      return dispatch({ type: 'AUTHLOGOUT' })
+    }
+    if (user) {
+      return dispatch({ type: 'AUTHLOGIN', payload: user })
+    }
+
+  }, [])
   console.log("User AuthContext State:", state)
   return (
     <AuthContext.Provider value={{...state, dispatch}}>
