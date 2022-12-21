@@ -39,7 +39,7 @@ export const useSignUpWithGoogle = () => {
 
   const signupwithgoogle = async (GoogleAuth) => {
       setloading(true)
-      await firebase.auth().signInWithPopup(GoogleAuth);
+      await firebase.auth().signInWithRedirect(GoogleAuth);
       setloading(false)
    
      
