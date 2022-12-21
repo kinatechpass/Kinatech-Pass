@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './Register.css'
 import '../../index.css'
 import { HiOutlineMail, HiLockClosed } from "react-icons/hi";
@@ -10,6 +10,7 @@ import { useSignUpWithGoogle } from '../../hooks/useSignUpWithGoogle';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import { getAuth } from 'firebase/auth';
+import { useRegister } from '../../hooks/useRegister';
 
 export default function JoinUs() {
   
@@ -20,7 +21,7 @@ export default function JoinUs() {
   const [response, setresponse] = useState()
   const [errorr, seterrorr] = useState()
  const { signupwithgoogle, loading, error} = useSignUpWithGoogle()
-
+  const { signup, errorMsg, Loading, failed} = useRegister()
   const handleEmailChange = (e) => {
     setemail(e.target.value)
   }
@@ -57,27 +58,18 @@ const signInWithGoogle = async () => {
 
  const createAccount = async (e) => {
   e.preventDefault()
-
-   const response = await fetch('http://localhost:4000/api/v1/account/register', {
-     method: 'POST',
-     headers: { 'Content-Type': 'application/json' },
-     body: JSON.stringify({ email, phone, password })
-
-   })
-
-   const json = await response.json()
-
-   if (response.ok) {
-     return console.log(json)
-   }
+   signup(email, phone, password)
    
-
-   if (!response.ok) {
-     seterrorr(json)
-     return console.log(json)
-   }
+ 
  }
-
+ 
+//  useEffect(()=>{
+//    failed ? toast.error(JSON.parse(errorMsg.error), {
+//      position: toast.POSITION.TOP_CENTER
+//    }) : toast.success("Account created succesfully!", {
+//      position: toast.POSITION.TOP_CENTER
+//    });
+//  }, [createAccount])
   return (
     <div className='cover ml-5 lg:ml-0 lg:text-lg'>
       <div className="Airtime-body">
