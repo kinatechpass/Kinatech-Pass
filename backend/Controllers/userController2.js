@@ -161,6 +161,62 @@ async function LoginWithPhone(req, res) {
 
 }
 
+async function sendResetPswLink(req, res){
+   const {email } = req.body
+
+  const user = await User.findOne({ Email: email })
+
+  if (!user) {
+    return res.status(400).json({ error: "User Not Found!" })
+  }
+
+  let mailTransporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL,
+      pass: process.env.PASSWORD
+    }
+  });
+  // point to the template folder
+  const handlebarOptions = {
+    viewEngine: {
+      partialsDir: path.resolve('./views/'),
+      defaultLayout: false,
+    },
+    viewPath: path.resolve('./views/'),
+  };
+
+  // use a template file with nodemailer
+  mailTransporter.use('compile', hte(handlebarOptions))
+
+
+  let mailDetails = {
+    from: process.env.EMAIL,
+    to: user.Email,
+    subject: 'Email Verification',
+    template: 'resetpsw',
+    context: {
+      name: user.Email.split("@")[0],
+    },
+    text: `Hi ${name} Welcome to Kinatech pay, 
+        Click the link below to reset your password`
+  };
+
+  mailTransporter.sendMail(mailDetails, function (err, data) {
+    if (err) {
+      console.log('An Error Occurred');
+    } else {
+      console.log('Email sent successfully');
+    }
+  });
+  //End of setups
+
+  return res.json({
+    message: `Welcome! ${name}`,
+    details: user.Email,
+    info: 'Kindly Check Your Inbox And Click The Link to Reset your password'
+  })
+}
 //Reset Password
 async function ResetPassword(req, res) {
 
@@ -202,5 +258,6 @@ module.exports = {
   Login,
   LoginWithPhone,
   ResetPassword,
-  verifyEmail
+  verifyEmail,
+  sendResetPswLink
 }

@@ -1,5 +1,5 @@
 const express = require("express")
-const { Register, Users, Login, LoginWithPhone, ResetPassword, verifyEmail } = require("../Controllers/userController2")
+const { Register, Users, Login, LoginWithPhone, ResetPassword, verifyEmail, sendResetPswLink } = require("../Controllers/userController2")
 const  requireAuth  = require("../Middleware/requireAuth")
 const router = express.Router()
 const cors = require('cors')
@@ -9,6 +9,8 @@ router.use(cors({
 }));
 // Register
 router.post('/register', Register)
+
+router.post('/sendLink', sendResetPswLink)
 
 router.post('/resetpassword', ResetPassword)
  

@@ -39,7 +39,7 @@ export default function Login() {
     }
   }
   return (
-    <div className='cover '>
+    <div className='cover ml-2 lg:ml-0 lg:text-lg'>
       <div className="Airtime-body">
 
 
@@ -51,7 +51,7 @@ export default function Login() {
         </div>
       </div>
 
-      <div className="mt-4 sm:ml-7 md:ml-0 content p-4  ">
+      <div className="mt-4 sm:ml-7 md:ml-0 content p-4 ml-5 lg:ml-0 lg:text-lg ">
 
         <div className="cont md:grid md:grid-cols-2 lg:grid-cols-3 divide-x bg-white border-gray-500">
           <div className="form text-center">

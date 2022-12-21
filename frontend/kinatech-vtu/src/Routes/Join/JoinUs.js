@@ -16,9 +16,9 @@ export default function JoinUs() {
   const [hasSignedupwithGoogle, sethasSignedupwithGoogle] = useState(false)
   const [email, setemail] = useState("")
   const [phone, setphone] = useState("")
-  const [psw, setpsw] = useState("")
-  const [response, setresponse] = useState(second)
-  const [errorr, seterrorr] = useState(second)
+  const [password, setpsw] = useState("")
+  const [response, setresponse] = useState()
+  const [errorr, seterrorr] = useState()
  const { signupwithgoogle, loading, error} = useSignUpWithGoogle()
 
   const handleEmailChange = (e) => {
@@ -41,7 +41,7 @@ const signInWithGoogle = async () => {
   const phone = '0908765434'
   const response = await fetch('/api/v1/account/register', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/josn' },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, phone, password })
 
   })
@@ -58,9 +58,9 @@ const signInWithGoogle = async () => {
  const createAccount = async (e) => {
   e.preventDefault()
 
-   const response = await fetch('/api/v1/account/register', {
+   const response = await fetch('http://localhost:4000/api/v1/account/register', {
      method: 'POST',
-     headers: { 'Content-Type': 'application/josn' },
+     headers: { 'Content-Type': 'application/json' },
      body: JSON.stringify({ email, phone, password })
 
    })
@@ -79,7 +79,7 @@ const signInWithGoogle = async () => {
  }
 
   return (
-    <div className='cover '>
+    <div className='cover ml-5 lg:ml-0 lg:text-lg'>
       <div className="Airtime-body">
 
       </div>
@@ -90,7 +90,7 @@ const signInWithGoogle = async () => {
         </div>
       </div>
 
-      <div className="mt-4 sm:ml-7 md:ml-0 content p-4  ">
+      <div className="mt-4 sm:ml-7 md:ml-0 content p-4 ml-5 lg:ml-0 lg:text-lg ">
 
         <div className="cont md:grid md:grid-cols-2 lg:grid-cols-3 divide-x bg-white border-gray-500">
           <div className="form text-center">
@@ -115,7 +115,7 @@ const signInWithGoogle = async () => {
                    
                   <div className="flex mt-4 mx-9 rounded-lg ">
                     <HiLockClosed className='icon p-1 h-12 text-fuchsia-700' /> 
-                    <input type="Password" value={psw} onChange={handlepswChange} className="password text-sm text-center h-12 block" name='psw' placeholder='Password' />
+                    <input type="Password" value={password} onChange={handlepswChange} className="password text-sm text-center h-12 block" name='password' placeholder='Password' />
                   </div>
                   <span className="hint text-rose-500 text-sm">{"Pls Enter a Strong Password"}</span>
 

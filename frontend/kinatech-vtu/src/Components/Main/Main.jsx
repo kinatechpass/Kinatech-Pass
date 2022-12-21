@@ -24,6 +24,7 @@ import AirtelForm from '../../Routes/Data/AirtelForm';
 import MobileForm from '../../Routes/Data/MobileForm';
 import GOTVForm from '../../Routes/Tv/GOTVForm';
 import { useGoogleAuthContext } from '../../hooks/useGoogleAuthContext';
+import Profile from '../../Routes/Profile/Profile';
 // import Tbody from '../Tailwind Body/Tbody';
 function Main() {
   const { googleUser }  = useGoogleAuthContext()
@@ -47,6 +48,7 @@ function Main() {
              <Route path='/Tv/DSTVform' element={<DSTVForm />} />
           <Route path='/Tv/GOTVform' element={<GOTVForm />} />
             <Route path='/Gifts' element={<Gifts />} />
+          <Route path='/Profile' element={<Profile />} />
             {<Route path='/joinUs' element={ !googleUser || !user ? <JoinUs /> : <Navigate to={'/Account'}/>} />} 
           <Route path='/Login' element={!googleUser || !user ? <Login /> : <Navigate to={'/Account'} />} />} />
             <Route path='/More' element={<More />} />

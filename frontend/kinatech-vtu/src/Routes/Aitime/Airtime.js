@@ -28,16 +28,16 @@ function Airtime() {
 
 </div>
       <div className=" mt-4 ref-program bg-white rounded-lg p-4 text-fuchsia-500 flex gap-4">
-        <h2 className='font-bold text-lg p-2'>Join Our Refferal Program And Earn</h2>
+        <h2 className='font-bold p-2 ml-2 lg:ml-0 lg:text-lg'>Join Our Refferal Program And Earn</h2>
         <div className='btnDiv'>
           <button className='btnn bg-rose-500 text-white px-4 py-1 rounded-lg font-bold'>Join Now!</button>
         </div>
       </div>
 
-      <div className="mt-4 content p-4  bg-white">
+      <div className="mt-4 content p-4  bg-white ml-2 lg:ml-0 lg:text-lg">
         
-        <h1 className='font-bold text-xl text-fuchsia-500 p-2'>Airtime Recharge</h1>
-        <span className='text-sm text-gray-800 p-2'>Recharge your phone airtime using the VTpass VTU service</span>
+        <h1 className='font-bold ml-2 lg:ml-0 lg:text-xl text-fuchsia-500 p-2'>Airtime Recharge</h1>
+        <span className='text-sm text-gray-800 p-2 lg:ml-0 ' >Recharge your phone airtime using <br />the Kinatech Pay service</span>
 
     <div className="md:grid md:grid-cols-2 lg:grid-cols-3">
     <Link to="/Airtime/Form">

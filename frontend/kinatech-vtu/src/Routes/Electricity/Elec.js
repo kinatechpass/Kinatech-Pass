@@ -16,18 +16,18 @@ export default function Elec() {
     localStorage.setItem("savedProvider", select)
   }
   return (
-    <div className='cover'>
+    <div className='cover ml-2 lg:ml-0 lg:text-lg'>
       <div className="Airtime-body">
 
       </div>
       <div className=" mt-4 ref-program bg-white rounded-lg p-4 text-fuchsia-500 flex gap-4">
-        <h2 className='font-bold text-lg p-2'>Join Our Refferal Program And Earn</h2>
+        <h2 className='font-bold p-2 ml-2 lg:ml-0 lg:text-lg'>Join Our Refferal Program And Earn</h2>
         <div className='btnDiv'>
           <button className='btnn bg-rose-500 text-white px-4 py-1 rounded-lg font-bold'>Join Now!</button>
         </div>
       </div>
 
-      <div className="mt-4 content p-4  bg-white">
+      <div className="mt-4 content p-4  bg-white ml-2 lg:ml-0 lg:text-lg">
         <h1 className='font-bold text-xl text-fuchsia-500 p-2'>NEPA Recharge</h1>
         <span className='text-sm text-gray-800 p-2'>Pay Your NEPA Bills Using Kinatech Pay Services</span>
         <div className='mt-4 mx-9 rounded-lg'>

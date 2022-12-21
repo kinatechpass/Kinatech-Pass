@@ -4,12 +4,12 @@ import '../../index.css'
 
 export default function Gifts() {
   return (
-    <div className='cover'>
+    <div className='cover ml-2 lg:ml-0 lg:text-lg'>
       <div className="Airtime-body">
 
       </div>
       <div className=" mt-4 ref-program bg-white rounded-lg p-4 text-fuchsia-500 flex gap-4">
-        <h2 className='font-bold text-lg p-2'>Join Our Refferal Program And Earn</h2>
+        <h2 className='font-bold p-2 ml-2 lg:ml-0 lg:text-lg'>Join Our Refferal Program And Earn</h2>
         <div className='btnDiv'>
           <button className='btnn bg-rose-500 text-white px-4 py-1 rounded-lg font-bold'>Join Now!</button>
         </div>
