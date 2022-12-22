@@ -109,7 +109,7 @@ async function Login(req, res) {
    const pswCheck = await bcrypt.compare(password, user.Password)
 
    if(!pswCheck){
-   return res.json({
+   return res.status(400).json({
       error:"Incorrect Password"
     })
    }
@@ -119,7 +119,7 @@ async function Login(req, res) {
 
    res.status(201).json({
     message:`Welcome ${name}`,
-    user:user,
+    details:user,
     token:createToken(user._id)
    })
    
@@ -155,7 +155,7 @@ async function LoginWithPhone(req, res) {
 
   res.json({
     message: `Welcome ${name}`,
-    user: user,
+    details: user,
     token
   })
 

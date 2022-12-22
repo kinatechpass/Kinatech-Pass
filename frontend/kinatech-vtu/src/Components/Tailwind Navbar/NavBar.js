@@ -19,9 +19,12 @@ function NavBar() {
         {/* Nav links */}
         <div className="flex justify-end text-white text-lg p-5 cursor-pointer gap-4 md:gap-2 lg:gap-10">
 
-          <div className="flex"> <FaLightbulb className='hover:text-orange-500' /><span className="hidden md:inline-block text-sm hover:text-orange-500"> Find My Token</span></div>
+          <div className="flex"> {!googleUser || !authUser && (<FaLightbulb className='hover:text-orange-500' />)}
+            {googleUser || authUser ? (<span className=" md:inline-block text-sm hover:text-orange-500"><Link to={'/Account'}> DashBoard</Link></span> ) 
+            :( 
+                <span className="hidden md:inline-block text-sm hover:text-orange-500 ml-2">  Find My Token</span>) }</div>
           <IoMdNotifications className='hover:text-orange-500'/>
-
+          
           { googleUser || authUser ? (<Link to="/Profile"> <FaUserCircle className='hover:text-orange-500' /> </Link> ) :
             ( 
           <span className="inline-block text-sm hover:text-orange-500">

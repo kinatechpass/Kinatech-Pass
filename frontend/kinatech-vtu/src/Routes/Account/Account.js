@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './Account.css'
 import { BsWallet } from "react-icons/bs";
 import shareContext from '../../Context/ShareContext';
@@ -8,11 +8,14 @@ import { getAuth } from 'firebase/auth';
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 export default function Account() {
   const { googleName } = useContext(shareContext)
   const [isSignedIn, setisSignedIn] = useState(true)
   const navigate = useNavigate()
+  const [balance, setbalance] = useState()
+
   // const auth = getAuth();
   // const user = auth.currentUser;
 
@@ -29,6 +32,29 @@ export default function Account() {
    navigate('/Login')
  }
 
+
+  const token = authUser.token 
+  useEffect(() => {
+    const getBalance = async () => {
+      const response = await fetch('http://localhost:4000/api/v1/profile/', {
+        method: 'GET',
+        headers: {
+          'authorization': `Bearer ${token}`
+        }
+      })
+
+      const json = await response.json()
+      const parsejson = json.message.Amount
+      if (response.ok) {
+        setbalance(parsejson)
+
+      }
+      if (!response.ok) {
+        alert("some error occured!")
+      }
+    }
+    getBalance()
+  }, [])
   
 
   return isSignedIn ?  (
@@ -52,7 +78,7 @@ export default function Account() {
             </div>
             <div className="mt-7 p-2 text-fuchsia-500 font-bold">
               <p>LifeTime Earnings</p>
-              <p className='text-white text-xl font-light font-sans'>0.00 NGN</p>
+              <p className='text-white text-xl font-light font-sans'>{balance} NGN</p>
             </div>
           </div>
           <p className='text-white ml-4 text-fuchsia-500 font-bold'>Earnings</p>

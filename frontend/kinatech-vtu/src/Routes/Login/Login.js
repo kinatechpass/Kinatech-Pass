@@ -5,7 +5,7 @@ import PhoneForm from './phoneForm';
 import EmailForm from './EmailForm';
 import { HiLockClosed } from "react-icons/hi";
 import { Link } from 'react-router-dom';
-
+import { useLogin } from '../../hooks/useLogin';
 
 export default function Login() {
   const [loginToggle, setloginToggle] = useState(true) 
@@ -14,10 +14,15 @@ export default function Login() {
 
   const [email, setemail] = useState("")
   const [password, setpassword] = useState("")
-
+  
+  const { login } = useLogin()
+  
    const handleEmailChange = (e) => {
     setemail(e.target.value)
    }
+  const handlePasswordChange = (e) => {
+    setpassword(e.target.value)
+  }
   const toggle = () => {
      setloginToggle(!loginToggle)
 
@@ -25,18 +30,9 @@ export default function Login() {
 
   const SignIn = async (e) => {
     e.preventDefault()
-    const response = await fetch('/api/v1/account/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password })
-
-    })
-
-    const json = await response.json()
-
-    if (response.ok) {
-      return console.log(json)
-    }
+    console.log(email, password)
+    login(email, password)
+    
   }
   return (
     <div className='cover ml-2 lg:ml-0 lg:text-lg'>
@@ -72,7 +68,7 @@ export default function Login() {
 
                   <div className="flex mt-4 mx-9 rounded-lg ">
                     <HiLockClosed className='icon p-1 h-12 text-fuchsia-700' />
-                    <input type="Password" value={password} onChange={(e)=> setpassword(e.target.value)} className="password text-sm text-center h-12 block" name='psw' placeholder='Password' />
+                    <input type="Password" value={password} onChange={handlePasswordChange} className="password text-sm text-center h-12 block" name='psw' placeholder='Password' />
                   </div>
                   <span className="hint text-rose-500 text-sm">{"Pls Enter a Strong Password"}</span>
 
