@@ -20,7 +20,8 @@ export default function Account() {
   //  setisSignedIn(true){}
   //   } 
   const user = JSON.parse(localStorage.getItem('user'))
- if(!user){
+  const authUser = JSON.parse(localStorage.getItem('authUser'))
+ if(!user && !authUser){
   
    toast.error("Not Logged in", {
      position: toast.POSITION.BOTTOM_CENTER
@@ -28,10 +29,12 @@ export default function Account() {
    navigate('/Login')
  }
 
+  
+
   return isSignedIn ?  (
     <div className='cover'>
       <div className="Airtime-body">
-        <h1 className='mt-4 text-3xl font-bold'>Welcome! {user && user.displayName} </h1> 
+        <h1 className='mt-4 text-3xl font-bold'>Welcome! {user && user.displayName || authUser && authUser.details.Email.split("@")[0]}  </h1> 
         <p>Play Around with your dashboard and start Earning</p>
       </div>
       <div className=" ref-program bg-white rounded-lg p-4 text-fuchsia-500 flex gap-4">

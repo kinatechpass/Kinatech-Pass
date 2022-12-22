@@ -15,24 +15,27 @@ import { IoIosArrowDropleft } from "react-icons/io";
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import { useGoogleAuthContext } from '../../hooks/useGoogleAuthContext';
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 function SideBar() {
   const [expandSidebar, setExpandsideBar] = useState(false)
   const navigate = useNavigate()
   const { dispatch, googleUser } = useGoogleAuthContext()
+  const { set, authUser } = useAuthContext()
   const ExpandSidebar = () => {
     setExpandsideBar(!expandSidebar)
   }
 
   const logout = () => {
     const user = localStorage.getItem('user')
-    if(!user){
+    const authUser = localStorage.getItem('authUser')
+    if(!user || !authUser){
       navigate('/Login')
     }
     localStorage.removeItem('user')
-    
+    localStorage.removeItem('authUser')
     dispatch({ type:'LOGGEDOUTWITHGOOGLE'})
-    
+    set({ type: 'AUTHLOGOUT' })
     firebase.auth().onAuthStateChanged(async function (user) {
       if (user) {
         firebase.auth().signOut()
@@ -99,7 +102,7 @@ function SideBar() {
 
 
         
-     { googleUser ? (   <div className="absolute bottom-0 left-5 mb-16  flex justify-center gap-1 py-3 cursor-pointer hover:opacity-50">
+     { googleUser || authUser ? (   <div className="absolute bottom-0 left-5 mb-16  flex justify-center gap-1 py-3 cursor-pointer hover:opacity-50">
           <p onClick={logout}> <CgLogOut className="transition ease-in-out delay-150 text-4xl 
         hover:-translate-y-1 hover:scale-110 duration-300 lg:text-2xl 
         "/></p><span onClick={() => (setExpandsideBar(false))} className={expandSidebar ? "inline-block" : "hidden lg:inline-block"}>

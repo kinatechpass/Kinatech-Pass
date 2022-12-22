@@ -25,9 +25,11 @@ import MobileForm from '../../Routes/Data/MobileForm';
 import GOTVForm from '../../Routes/Tv/GOTVForm';
 import { useGoogleAuthContext } from '../../hooks/useGoogleAuthContext';
 import Profile from '../../Routes/Profile/Profile';
+import { useAuthContext } from '../../hooks/useAuthContext';
 // import Tbody from '../Tailwind Body/Tbody';
 function Main() {
   const { googleUser }  = useGoogleAuthContext()
+  const { authUser } = useAuthContext()
   const user = JSON.parse(localStorage.getItem('user'))
   return (
     <>
@@ -49,10 +51,14 @@ function Main() {
           <Route path='/Tv/GOTVform' element={<GOTVForm />} />
             <Route path='/Gifts' element={<Gifts />} />
           <Route path='/Profile' element={<Profile />} />
-            {<Route path='/joinUs' element={ !googleUser || !user ? <JoinUs /> : <Navigate to={'/Account'}/>} />} 
-          <Route path='/Login' element={!googleUser || !user ? <Login /> : <Navigate to={'/Account'} />} />} />
+            {<Route path='/joinUs' element={ !googleUser || !user || !authUser ? <JoinUs /> : <Navigate to={'/Account'}/>} />} 
+          <Route path='/Login' element={!googleUser || !user || !authUser ? <Login /> : <Navigate to={'/Account'} />} />
+
+          {<Route path='/joinUs' element={ !authUser ? <JoinUs /> : <Navigate to={'/Account'} />} />}
+          <Route path='/Login' element={!googleUser || !user || !authUser ? <Login /> : <Navigate to={'/Account'} />} />
+
             <Route path='/More' element={<More />} />
-          <Route path='/Account' element={googleUser || user ? <Account /> : <Navigate to={'/Login'} />} />} />
+          <Route path='/Account' element={googleUser || user || authUser ? <Account /> : <Navigate to={'/Login'} />} />
            <Route path='/ElctricityForm' element={<ElecForm />} />
             <Route path='/Airtime/Form' element={<Form />} />
             <Route path='/Data/Form' element={<MtnForm />} />

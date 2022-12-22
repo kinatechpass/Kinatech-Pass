@@ -2,13 +2,14 @@ import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react"
 import { useAuthContext } from "./useAuthContext"
+import { useNavigate } from 'react-router';
 
 
 export const useRegister = () => {
    const [errorMsg, seterror] = useState(null)
    const [Loading, setloading] = useState(null)
-  
-  const { dispatch } = useAuthContext()
+  const navigate = useNavigate() 
+  const { set } = useAuthContext()
 
    const signup = async (email, phone, password) => {
      setloading(true)
@@ -24,8 +25,9 @@ export const useRegister = () => {
 
      if (response.ok) {
        localStorage.setItem('authUser', JSON.stringify(json))
-       dispatch({ type:'AUTHLOGIN', payload: json})
+       set({ type:'AUTHLOGIN', payload: json})
        setloading(false)
+       navigate('/Account')
        const auth = JSON.parse(localStorage.getItem('authUser'))
        const name = auth.details.Email.split("@")[0]
        toast.success(`Welcome! ${name} `, {
