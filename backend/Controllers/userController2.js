@@ -15,7 +15,7 @@ const createToken = (id) => {
 // Register
 async function Register(req, res) {
   const { email, phone, password } = req.body
-    if(!email || !phone || !password) {
+    if(!email || !password) {
      return res.status(400).json({
         error:"No Field Should Be Empty!"
       })

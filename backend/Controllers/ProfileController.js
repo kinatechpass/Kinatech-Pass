@@ -50,7 +50,6 @@ const addBalance = async (req, res) => {
      return res.status(400).json({error:'An Error Occured!', e})
     }
 }
-
 module.exports = {
   getBalance,
   addBalance,

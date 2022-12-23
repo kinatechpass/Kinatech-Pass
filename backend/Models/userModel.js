@@ -14,7 +14,6 @@ const userShema = new Schema({
   },
    Phone: {
     type: String,
-    required: [true, "phone is required"],
     unique: [true, "phone number exists"],
     min:10
   },
@@ -26,6 +25,9 @@ const userShema = new Schema({
   RefCode: {
     type: String,
     min:4
+  },
+  PhotoUrl:{
+    type:String
   }
 }, {timestamps:true})
 

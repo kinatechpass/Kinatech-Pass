@@ -44,6 +44,19 @@ export default function Profile() {
     }
     getName()
   }, [])
+
+  const edit = (e) => {
+   var input = document.querySelector("#input")
+   var emailinput = document.querySelector("#emailinput")
+    var phoneinput = document.querySelector("#phoneinput")
+    var pswinput = document.querySelector("#pswinput")
+
+    input.removeAttribute('readOnly')
+    emailinput.removeAttribute('readOnly')
+    phoneinput.removeAttribute('readOnly')
+    pswinput.removeAttribute('readOnly')
+    input.value=""
+  }
   return (
     <div className='cover'>
       <div className="Airtime-body">
@@ -64,7 +77,7 @@ export default function Profile() {
         <div className="md:grid grid-cols-2 gap-4 mt-4">
           <div className="bg-white rounded-lg flex flex-col justify-center items-center ml-6">
             <div className="pic border border-lg mt-9 rounded-full" style={{aspectRatio:'1/1', width:'30%'}}>
-             <img src={image || '/assets/user.png'} className="rounded-full" style={{aspectRatio:'1/1'}} />
+             <img src={image || '/assets/user.png'} className="rounded-full" style={{aspectRatio:'1/1', objectFit:'cover'}} />
             </div>
             <div className="">
               {/* <button className="deposit mx-auto mb-4 mt-4 text-white text-center px-4 py-1 
@@ -93,24 +106,24 @@ export default function Profile() {
            <div className='bg-gray-500 mt-4' style={{width:'90%', height:'0.5px'}}></div>
             <div className="p-4 lg:p-1 mt-4">
               <label htmlFor="Name" className="">Name:</label>
-              <input type="text" value={name} className="mb-4 ml-1" style={{ border: '1.5px solid purple' }} readOnly />
+              <input type="text" id='input' value={name} className="mb-4 ml-1" style={{ border: '1.5px solid purple' }} readOnly />
             </div>
             <div className="p-4 lg:p-1">
               <label htmlFor="Email" className="">Email:</label>
-              <input type="text" value={email} className="mb-4 ml-1" style={{ border: '1.5px solid purple' }} readOnly />
+              <input type="text" id='emailinput' onChange={(e)=> setemail(e.target.value)} value={email} className="mb-4 ml-1" style={{ border: '1.5px solid purple' }} readOnly />
             </div>
             <div className="p-4 lg:p-1">
               <label htmlFor="Number"  className="">Phone:</label>
-              <input type="text" value={phone} className="mb-4 ml-1" style={{ border: '1.5px solid purple' }} readOnly />
+              <input type="text" id='phoneinput' value={phone} className="mb-4 ml-1" style={{ border: '1.5px solid purple' }} readOnly />
             </div>
             <div className="p-4 lg:p-1">
               <label htmlFor="pass" className=""> Psw:*****</label>
-              <input type="text" value={'**********'} className="mb-4 ml-1" style={{ border: '1.5px solid purple' }} readOnly/>
+              <input type="text" id='pswinput' value={'**********'} className="mb-4 ml-1" style={{ border: '1.5px solid purple' }} readOnly/>
             </div>
 
            
             <div className="p-4 lg:p-1">
-              <button className="deposit mx-auto mb-4 mt-4 text-white text-center px-4 py-1 
+              <button onClick={edit} className="deposit mx-auto mb-4 mt-4 text-white text-center px-4 py-1 
               rounded-lg font-bold">
                 Edit Fields</button>
             </div>

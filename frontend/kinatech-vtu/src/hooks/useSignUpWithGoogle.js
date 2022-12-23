@@ -7,6 +7,8 @@ import { getAnalytics } from "firebase/analytics";
 import { useState } from 'react';
 import { useGoogleAuthContext } from '../hooks/useGoogleAuthContext'
 import { useNavigate } from 'react-router-dom';
+import { useRegister } from './useRegister';
+import { useLogin } from './useLogin';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAAuXn197IRidCsXp1gCnskDsOHPE1M644",
@@ -31,7 +33,8 @@ export const useSignUpWithGoogle = () => {
        const [error, seterror] = useState(null)
        const [hasSignedupwithGoogle, sethasSignedupwithGoogle] = useState(false)
        const { dispatch } = useGoogleAuthContext()
-
+      const { signup } = useRegister()
+      const { login } = useLogin()
       const user = JSON.parse(localStorage.getItem('user'))
        
       //  const user = auth.currentUser
@@ -54,6 +57,13 @@ export const useSignUpWithGoogle = () => {
       }
     });
 
-   
+  const createAccountWithGoogleDetails = async () => {
+    const user = JSON.parse(localStorage.getItem('user'))
+    const email = user.email
+    const phone = user.phoneNumber
+    const password = user.uid
+    await signup(email, phone, password)
+    await login(email, password)
+  }
     return { loading, signupwithgoogle}
 }

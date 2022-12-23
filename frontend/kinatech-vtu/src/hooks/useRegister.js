@@ -27,10 +27,10 @@ export const useRegister = () => {
        localStorage.setItem('authUser', JSON.stringify(json))
        set({ type:'AUTHLOGIN', payload: json})
        setloading(false)
-       navigate('/Account')
+       navigate('/Login')
        const auth = JSON.parse(localStorage.getItem('authUser'))
        const name = auth.details.Email.split("@")[0]
-       toast.success(`Welcome! ${name} `, {
+       toast.success(`Welcome! ${name}, continue to login `, {
          position: toast.POSITION.TOP_CENTER
        });
        return console.log(json)
